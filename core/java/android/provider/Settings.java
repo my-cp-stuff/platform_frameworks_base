@@ -5681,6 +5681,17 @@ public final class Settings {
             }
         };
 
+
+        /**
+         * Whether to launch default music player when headset plugged in
+         * @hide
+         */
+        public static final String HEADSET_CONNECT_PLAYER = "headset_connect_player";
+
+        /** @hide */
+        private static final Validator HEADSET_CONNECT_PLAYER_VALIDATOR =
+                BOOLEAN_VALIDATOR;
+
         /**
          * Status bar brightness control.
          * @hide
@@ -5831,6 +5842,7 @@ public final class Settings {
             CLOCK_SHOW_STATUS_AREA,
             FLASHLIGHT_ON_CALL,
             STATUS_BAR_BRIGHTNESS_CONTROL,
+            HEADSET_CONNECT_PLAYER,
         };
 
         /**
@@ -6012,6 +6024,7 @@ public final class Settings {
             PRIVATE_SETTINGS.add(KEY_CAMERA_DOUBLE_TAP_ACTION);
             PRIVATE_SETTINGS.add(QS_BLUR_ENABLED);
             PRIVATE_SETTINGS.add(STATUS_BAR_BRIGHTNESS_CONTROL);
+            PRIVATE_SETTINGS.add(HEADSET_CONNECT_PLAYER);
         }
 
         /**
@@ -6151,6 +6164,7 @@ public final class Settings {
             VALIDATORS.put(CLOCK_SHOW_STATUS_AREA, CLOCK_SHOW_STATUS_AREA_VALIDATOR);
             VALIDATORS.put(INCALL_FEEDBACK_VIBRATE, INCALL_FEEDBACK_VIBRATE_VALIDATOR);
             VALIDATORS.put(FLASHLIGHT_ON_CALL, FLASHLIGHT_ON_CALL_VALIDATOR);
+            VALIDATORS.put(HEADSET_CONNECT_PLAYER, HEADSET_CONNECT_PLAYER_VALIDATOR);
         }
 
         /**
