@@ -2015,6 +2015,8 @@ public class StatusBar extends SystemUI implements DemoMode,
             resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.QS_COLUMNS_LANDSCAPE),
                     false, this, UserHandle.USER_ALL);
+                    Settings.System.STATUS_BAR_QUICK_QS_PULLDOWN),
+                    false, this, UserHandle.USER_ALL);
         }
 
         @Override
@@ -2022,8 +2024,8 @@ public class StatusBar extends SystemUI implements DemoMode,
             if (uri.equals(Settings.Secure.getUriFor(
                     Settings.Secure.FP_SWIPE_TO_DISMISS_NOTIFICATIONS))) {
                 setFpToDismissNotifications();
-            } else if (uri.equals(Settings.System.getUriFor(
-                    Settings.System.DOUBLE_TAP_SLEEP_GESTURE))) {
+            } else if (uri.equals(Settings.System.getUriFor(Settings.System.DOUBLE_TAP_SLEEP_GESTURE)) ||
+                    uri.equals(Settings.System.getUriFor(Settings.System.STATUS_BAR_QUICK_QS_PULLDOWN))) {
                 setStatusBarWindowViewOptions();
             } else if (uri.equals(Settings.System.getUriFor(
                     Settings.System.LOCKSCREEN_MEDIA_BLUR))) {
@@ -2050,8 +2052,7 @@ public class StatusBar extends SystemUI implements DemoMode,
                     uri.equals(Settings.System.getUriFor(Settings.System.QS_COLUMNS_PORTRAIT)) ||
                     uri.equals(Settings.System.getUriFor(Settings.System.QS_COLUMNS_LANDSCAPE))) {
                 setQsRowsColumns();
-            }
-        }
+    }
 
         public void update() {
             setFpToDismissNotifications();
