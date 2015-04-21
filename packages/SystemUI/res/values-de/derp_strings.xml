@@ -62,6 +62,13 @@
     <string name="status_bar_vpn">VPN</string>
     <string name="status_bar_roaming">Daten-Roaming</string>
 
+    <!-- Heads Up QS Tile -->
+    <string name="quick_settings_heads_up_label">Pop-up</string>
+    <string name="accessibility_quick_settings_heads_up_off">Pop-up aus.</string>
+    <string name="accessibility_quick_settings_heads_up_on">Pop-up an.</string>
+    <string name="accessibility_quick_settings_heads_up_changed_off">Pop-up ausgeschaltet.</string>
+    <string name="accessibility_quick_settings_heads_up_changed_on">Pop-up eingeschaltet.</string>
+
     <!-- Screen recorder -->
     <string name="screenrecord_stopdot_label">Stop dot anzeigen</string>
 
