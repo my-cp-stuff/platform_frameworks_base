@@ -4503,6 +4503,15 @@ public final class Settings {
         public static final String SHOW_BATTERY_PERCENT = "dummy_show_battery_percent";
 
         /**
+         * Show 4G instead of LTE
+         * @hide
+         */
+        public static final String SHOW_FOURG = "show_fourg";
+
+        /** @hide */
+        public static final Validator SHOW_FOURG_VALIDATOR = BOOLEAN_VALIDATOR;
+
+        /**
          * Screenshod sound enable, This is the noise made when taking a screesnhot
          * Defaults to 1 - sounds enabled
          * @hide
@@ -4850,6 +4859,7 @@ public final class Settings {
             PRIVATE_SETTINGS.add(DISPLAY_COLOR_MODE);
             PRIVATE_SETTINGS.add(SCREENSHOT_SOUND);
             PRIVATE_SETTINGS.add(BACK_GESTURE_HEIGHT);
+            PRIVATE_SETTINGS.add(SHOW_FOURG);
         }
 
         /**
@@ -4946,6 +4956,7 @@ public final class Settings {
             VALIDATORS.put(STATUS_BAR_SHOW_BATTERY_PERCENT, STATUS_BAR_SHOW_BATTERY_PERCENT_VALIDATOR);
             VALIDATORS.put(STATUS_BAR_BATTERY_TEXT_CHARGING, STATUS_BAR_BATTERY_TEXT_CHARGING_VALIDATOR);
             VALIDATORS.put(NOTIFICATION_LIGHT_PULSE, BOOLEAN_VALIDATOR);
+            VALIDATORS.put(SHOW_FOURG, SHOW_FOURG_VALIDATOR);
             VALIDATORS.put(SCREENSHOT_SOUND, SCREENSHOT_SOUND_VALIDATOR);
             VALIDATORS.put(BACK_GESTURE_HEIGHT, BACK_GESTURE_HEIGHT_VALIDATOR);
         }
