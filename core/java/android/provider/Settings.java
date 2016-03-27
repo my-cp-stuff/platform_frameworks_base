@@ -5269,6 +5269,16 @@ public final class Settings {
         private static final Validator HEADS_UP_NOTIFICATION_SNOOZE_VALIDATOR =
               new SettingsValidators.InclusiveIntegerRangeValidator(0, 1200000);
 
+        /**
+        * Heads up timeout configuration
+        * @hide
+        */
+        public static final String HEADS_UP_TIMEOUT = "heads_up_timeout";
+
+        /** @hide */
+        private static final Validator HEADS_UP_TIMEOUT_VALIDATOR =
+                new SettingsValidators.InclusiveIntegerRangeValidator(0, 10000);
+
        /**
          * Allow users to pull down the status bar quickly
          * @hide
@@ -5812,6 +5822,7 @@ public final class Settings {
             QS_PANEL_BG_ALPHA,
             ALARM_ALERT,
             HEADS_UP_NOTIFICATION_SNOOZE,
+            HEADS_UP_TIMEOUT,
             NOTIFICATION_PULSE,
             AOD_NOTIFICATION_PULSE,
             AOD_NOTIFICATION_PULSE_CLEAR,
@@ -5974,6 +5985,7 @@ public final class Settings {
             PRIVATE_SETTINGS.add(QS_PANEL_BG_ALPHA);
             PRIVATE_SETTINGS.add(BACK_GESTURE_HEIGHT);
             PRIVATE_SETTINGS.add(HEADS_UP_NOTIFICATION_SNOOZE);
+            PRIVATE_SETTINGS.add(HEADS_UP_TIMEOUT);
             PRIVATE_SETTINGS.add(NOTIFICATION_PULSE);
             PRIVATE_SETTINGS.add(AOD_NOTIFICATION_PULSE);
             PRIVATE_SETTINGS.add(AOD_NOTIFICATION_PULSE_CLEAR);
@@ -6128,6 +6140,7 @@ public final class Settings {
             VALIDATORS.put(FINGERPRINT_ERROR_VIB, FINGERPRINT_ERROR_VIB_VALIDATOR);
             VALIDATORS.put(FINGERPRINT_SUCCESS_VIB, FINGERPRINT_SUCCESS_VIB_VALIDATOR);
             VALIDATORS.put(HEADS_UP_NOTIFICATION_SNOOZE,HEADS_UP_NOTIFICATION_SNOOZE_VALIDATOR);
+            VALIDATORS.put(HEADS_UP_TIMEOUT,HEADS_UP_TIMEOUT_VALIDATOR);
             VALIDATORS.put(NOTIFICATION_LIGHT_PULSE, BOOLEAN_VALIDATOR);
             VALIDATORS.put(NOTIFICATION_PULSE, NOTIFICATION_PULSE_VALIDATOR);
             VALIDATORS.put(AOD_NOTIFICATION_PULSE, AOD_NOTIFICATION_PULSE_VALIDATOR);
