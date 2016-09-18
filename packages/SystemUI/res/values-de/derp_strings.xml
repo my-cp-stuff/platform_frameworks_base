@@ -144,4 +144,10 @@
     <string name="lte_on">LTE aktiviert </string>
     <string name="lte_off">LTE deaktiviert</string>
 
+    <!-- Sound QS Tile -->
+    <string name="quick_settings_sound_label">Ton</string>
+    <string name="quick_settings_sound_ring">Klingelton</string>
+    <string name="quick_settings_sound_vibrate">Vibrieren</string>
+    <string name="quick_settings_sound_dnd">Nicht stören</string>
+
 </resources>
