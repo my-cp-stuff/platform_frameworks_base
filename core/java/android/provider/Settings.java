@@ -5126,6 +5126,50 @@ public final class Settings {
         private static final Validator STATUS_BAR_FILE_HEADER_IMAGE_VALIDATOR = ANY_STRING_VALIDATOR;
 
         /**
+         * some devices have a extra hw button e.g. n3 on the back on the
+         * fingerprint sensor. allow mapping button to key
+         *
+         * @hide
+         */
+        public static final String BUTTON_EXTRA_KEY_MAPPING = "button_extra_mapping";
+
+        /** @hide */
+        private static final Validator BUTTON_EXTRA_KEY_MAPPING_VALIDATOR =
+                ANY_STRING_VALIDATOR;
+
+        /**
+         * Enable proxi check for wake keys - must be implemented in a device
+         * KeyHandler
+         * @hide
+         */
+        public static final String DEVICE_PROXI_CHECK_ENABLED = "device_proxi_check_enabled";
+
+        /** @hide */
+        private static final Validator DEVICE_PROXI_CHECK_ENABLED_VALIDATOR =
+                BOOLEAN_VALIDATOR;
+
+        /**
+         * Enable Gesture Haptic feedback
+         * KeyHandler
+         * @hide
+         */
+        public static final String DEVICE_GESTURE_FEEDBACK_ENABLED =
+                "device_gesture_feedback_enabled";
+
+        /** @hide */
+        private static final Validator DEVICE_GESTURE_FEEDBACK_ENABLED_VALIDATOR =
+                BOOLEAN_VALIDATOR;
+
+        /**
+         * @hide
+         */
+        public static final String DEVICE_FEATURE_SETTINGS = "device_feature_settings";
+
+        /** @hide */
+        private static final Validator DEVICE_FEATURE_SETTINGS_VALIDATOR =
+                ANY_STRING_VALIDATOR;
+
+        /**
          * Settings to backup. This is here so that it's in the same place as the settings
          * keys and easy to update.
          *
@@ -5219,7 +5263,11 @@ public final class Settings {
             STATUS_BAR_DAYLIGHT_HEADER_PACK,
             STATUS_BAR_CUSTOM_HEADER_PROVIDER,
             STATUS_BAR_CUSTOM_HEADER_IMAGE,
-            STATUS_BAR_FILE_HEADER_IMAGE
+            STATUS_BAR_FILE_HEADER_IMAGE,
+            BUTTON_EXTRA_KEY_MAPPING,
+            DEVICE_PROXI_CHECK_ENABLED,
+            DEVICE_GESTURE_FEEDBACK_ENABLED,
+            DEVICE_FEATURE_SETTINGS
         };
 
         /**
@@ -5375,6 +5423,10 @@ public final class Settings {
             PRIVATE_SETTINGS.add(STATUS_BAR_CUSTOM_HEADER_PROVIDER);
             PRIVATE_SETTINGS.add(STATUS_BAR_CUSTOM_HEADER_IMAGE);
             PRIVATE_SETTINGS.add(STATUS_BAR_FILE_HEADER_IMAGE);
+            PRIVATE_SETTINGS.add(BUTTON_EXTRA_KEY_MAPPING);
+            PRIVATE_SETTINGS.add(DEVICE_PROXI_CHECK_ENABLED);
+            PRIVATE_SETTINGS.add(DEVICE_GESTURE_FEEDBACK_ENABLED);
+            PRIVATE_SETTINGS.add(DEVICE_FEATURE_SETTINGS);
         }
 
         /**
@@ -5502,6 +5554,10 @@ public final class Settings {
             VALIDATORS.put(STATUS_BAR_CUSTOM_HEADER_PROVIDER, STATUS_BAR_CUSTOM_HEADER_PROVIDER_VALIDATOR);
             VALIDATORS.put(STATUS_BAR_CUSTOM_HEADER_IMAGE, STATUS_BAR_CUSTOM_HEADER_IMAGE_VALIDATOR);
             VALIDATORS.put(STATUS_BAR_FILE_HEADER_IMAGE, STATUS_BAR_FILE_HEADER_IMAGE_VALIDATOR);
+            VALIDATORS.put(BUTTON_EXTRA_KEY_MAPPING, BUTTON_EXTRA_KEY_MAPPING_VALIDATOR);
+            VALIDATORS.put(DEVICE_PROXI_CHECK_ENABLED, DEVICE_PROXI_CHECK_ENABLED_VALIDATOR);
+            VALIDATORS.put(DEVICE_GESTURE_FEEDBACK_ENABLED, DEVICE_GESTURE_FEEDBACK_ENABLED_VALIDATOR);
+            VALIDATORS.put(DEVICE_FEATURE_SETTINGS, DEVICE_FEATURE_SETTINGS_VALIDATOR);
         }
 
         /**
