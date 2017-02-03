@@ -272,4 +272,7 @@
     <string name="stabilization_velocity_amplitude">Velocity Amplitude</string>
     <string name="stabilization_position_friction">Position Friction</string>
 
+    <!-- Running service button -->
+    <string name="accessibility_quick_settings_running_services">Open Running Services screen.</string>
+
 </resources>
