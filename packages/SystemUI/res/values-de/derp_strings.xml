@@ -27,4 +27,10 @@
     <string name="accessibility_quick_settings_caffeine_off">Koffein deaktiv</string>
     <string name="accessibility_quick_settings_caffeine_on">Koffein aktiv</string>
 
+    <!-- ADB over network tile -->
+    <string name="quick_settings_network_adb_enabled_label">Aktiviert</string>
+    <string name="quick_settings_network_adb_disabled_label">Deaktiviert</string>
+    <string name="quick_settings_network_adb_label">ADB über Netzwerk</string>
+    <string name="quick_settings_network_adb_toast">USB debugging ist nicht aktiviert</string>
+
 </resources>
