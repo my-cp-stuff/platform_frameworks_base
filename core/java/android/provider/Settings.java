@@ -5233,6 +5233,15 @@ public final class Settings {
         public static final String SHOW_MEDIA_HEADS_UP = "show_media_heads_up";
 
         /**
+         * @hide
+         */
+        public static final String LOCK_SHOW_STATUS_BAR = "lockscreen_show_status_bar";
+
+        /** @hide */
+        private static final Validator LOCK_SHOW_STATUS_BAR_VALIDATOR =
+               BOOLEAN_VALIDATOR;
+
+        /**
          * Adaptive playback
          * Automatically pause media when the volume is muted and
          * will resume automatically when volume is restored.
@@ -5427,6 +5436,7 @@ public final class Settings {
             NOTIFICATION_PULSE_COLOR,
             NOTIFICATION_PULSE_COLOR_AUTOMATIC,
             USE_OLD_MOBILETYPE,
+            LOCK_SHOW_STATUS_BAR,
             LOCKSCREEN_MEDIA_METADATA,
             NOTIFICATION_LIGHT_PULSE,
             BACK_GESTURE_HEIGHT,
@@ -5592,6 +5602,7 @@ public final class Settings {
             PRIVATE_SETTINGS.add(BACK_GESTURE_BLOCK_IME);
             PRIVATE_SETTINGS.add(STATUS_BAR_LOGO);
             PRIVATE_SETTINGS.add(DOUBLE_TAP_SLEEP_GESTURE);
+            PRIVATE_SETTINGS.add(LOCK_SHOW_STATUS_BAR);
             PRIVATE_SETTINGS.add(CUSTOM_BUTTON_BRIGHTNESS);
             PRIVATE_SETTINGS.add(CUSTOM_BUTTON_USE_SCREEN_BRIGHTNESS);
             PRIVATE_SETTINGS.add(BUTTON_BACKLIGHT_ENABLE);
@@ -5720,6 +5731,7 @@ public final class Settings {
             VALIDATORS.put(SHOW_VOLTE_ICON, SHOW_VOLTE_ICON_VALIDATOR);
             VALIDATORS.put(VOLTE_ICON_STYLE, VOLTE_ICON_STYLE_VALIDATOR);
             VALIDATORS.put(USE_OLD_MOBILETYPE, USE_OLD_MOBILETYPE_VALIDATOR);
+            VALIDATORS.put(LOCK_SHOW_STATUS_BAR, LOCK_SHOW_STATUS_BAR_VALIDATOR);
             VALIDATORS.put(LOCKSCREEN_MEDIA_METADATA, LOCKSCREEN_MEDIA_METADATA_VALIDATOR);
             VALIDATORS.put(STATUS_BAR_LOGO, STATUS_BAR_LOGO_VALIDATOR);
             VALIDATORS.put(QS_PANEL_BG_ALPHA, QS_PANEL_BG_ALPHA_VALIDATOR);
