@@ -46,6 +46,7 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.util.MathUtils;
 import android.view.LayoutInflater;
+import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.VelocityTracker;
 import android.view.View;
@@ -236,6 +237,8 @@ public class NotificationPanelView extends PanelView implements
     private int mTrackingPointer;
     private VelocityTracker mQsVelocityTracker;
     private boolean mQsTracking;
+
+    private GestureDetector mLockscreenDoubleTapToSleep;
 
     /**
      * If set, the ongoing touch gesture might both trigger the expansion in {@link PanelView} and
@@ -478,6 +481,14 @@ public class NotificationPanelView extends PanelView implements
         });
         mBottomAreaShadeAlphaAnimator.setDuration(160);
         mBottomAreaShadeAlphaAnimator.setInterpolator(Interpolators.ALPHA_OUT);
+        mLockscreenDoubleTapToSleep = new GestureDetector(context,
+                new GestureDetector.SimpleOnGestureListener() {
+            @Override
+            public boolean onDoubleTap(MotionEvent e) {
+                mPowerManager.goToSleep(SystemClock.uptimeMillis());
+                return true;
+            }
+        });
     }
 
     /**
@@ -1244,6 +1255,10 @@ public class NotificationPanelView extends PanelView implements
         // In such case, simply expand the panel instead of being stuck at the bottom bar.
         if (mLastEventSynthesizedDown && event.getAction() == MotionEvent.ACTION_UP) {
             expand(true /* animate */);
+        }
+        if (!mPulsing && !mDozing
+                && mBarState == StatusBarState.KEYGUARD) {
+            mLockscreenDoubleTapToSleep.onTouchEvent(event);
         }
         initDownStates(event);
         if (!mIsExpanding && !shouldQuickSettingsIntercept(mDownX, mDownY, 0)
