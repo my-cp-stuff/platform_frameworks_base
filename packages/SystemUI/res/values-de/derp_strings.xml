@@ -46,6 +46,8 @@
     <string name="quick_settings_sound_search">Musikerkennung</string>
     <string name="quick_settings_sound_search_no_app">Verzeihung, aber das funktioniert nicht, wenn Sie keine Musikerkennungsapp installiert haben.</string>
 
+    <string name="statusbar_items_title">Elemente der Statusleiste</string>
+
     <!-- Screen recorder -->
     <string name="screenrecord_stopdot_label">Stop dot anzeigen</string>
 
