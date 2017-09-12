@@ -150,4 +150,8 @@
     <string name="quick_settings_sound_vibrate">Vibrieren</string>
     <string name="quick_settings_sound_dnd">Nicht stören</string>
 
+    <!-- Screenshot QS tile -->
+    <string name="quick_settings_screenshot_label">Bildschirmfoto</string>
+    <string name="quick_settings_region_screenshot_label">Bildschirm-Ausschnitt</string>
+
 </resources>
