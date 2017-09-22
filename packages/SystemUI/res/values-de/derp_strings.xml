@@ -47,6 +47,11 @@
     <string name="quick_settings_sound_search_no_app">Verzeihung, aber das funktioniert nicht, wenn Sie keine Musikerkennungsapp installiert haben.</string>
 
     <string name="statusbar_items_title">Elemente der Statusleiste</string>
+    <string name="lockscreen_default">Standard</string>
+    <string name="lockscreen_hidden">Keine Aktion</string>
+
+    <!-- Shows when people have clicked on the custom lockscreen shortcut [CHAR LIMIT=60] -->
+    <string name="custom_hint">Zum Öffnen über das Symbol wischen</string>
 
     <!-- Screen recorder -->
     <string name="screenrecord_stopdot_label">Stop dot anzeigen</string>
