@@ -5318,6 +5318,26 @@ public final class Settings {
         private static final Validator HEADS_UP_TIMEOUT_VALIDATOR =
                 new SettingsValidators.InclusiveIntegerRangeValidator(0, 10000);
 
+        /**
+         * Applications list where heasdup should't show
+         *
+         * @hide
+         */
+        public static final String HEADS_UP_STOPLIST_VALUES = "heads_up_stoplist_values";
+        /** @hide */
+        private static final Validator HEADS_UP_STOPLIST_VALUES_VALIDATOR =
+                ANY_STRING_VALIDATOR;
+
+        /**
+         * Which applications to disable heads up notifications for
+         *
+         * @hide
+         */
+        public static final String HEADS_UP_BLACKLIST_VALUES = "heads_up_blacklist_values";
+        /** @hide */
+        private static final Validator HEADS_UP_BLACKLIST_VALUES_VALIDATOR =
+                ANY_STRING_VALIDATOR;
+
        /**
          * Allow users to pull down the status bar quickly
          * @hide
@@ -5911,6 +5931,8 @@ public final class Settings {
             STATUS_BAR_BRIGHTNESS_CONTROL,
             HEADSET_CONNECT_PLAYER,
             LESS_BORING_HEADS_UP,
+            HEADS_UP_BLACKLIST_VALUES,
+            HEADS_UP_STOPLIST_VALUES,
         };
 
         /**
@@ -6097,6 +6119,8 @@ public final class Settings {
             PRIVATE_SETTINGS.add(STATUS_BAR_BRIGHTNESS_CONTROL);
             PRIVATE_SETTINGS.add(HEADSET_CONNECT_PLAYER);
             PRIVATE_SETTINGS.add(LESS_BORING_HEADS_UP);
+            PRIVATE_SETTINGS.add(HEADS_UP_BLACKLIST_VALUES);
+            PRIVATE_SETTINGS.add(HEADS_UP_STOPLIST_VALUES);
         }
 
         /**
@@ -6243,6 +6267,8 @@ public final class Settings {
             VALIDATORS.put(FLASHLIGHT_ON_CALL, FLASHLIGHT_ON_CALL_VALIDATOR);
             VALIDATORS.put(HEADSET_CONNECT_PLAYER, HEADSET_CONNECT_PLAYER_VALIDATOR);
             VALIDATORS.put(LESS_BORING_HEADS_UP, LESS_BORING_HEADS_UP_VALIDATOR);
+            VALIDATORS.put(HEADS_UP_BLACKLIST_VALUES, HEADS_UP_BLACKLIST_VALUES_VALIDATOR);
+            VALIDATORS.put(HEADS_UP_STOPLIST_VALUES, HEADS_UP_STOPLIST_VALUES_VALIDATOR);
         }
 
         /**
