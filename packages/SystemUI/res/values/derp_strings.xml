@@ -66,6 +66,11 @@
     <string name="status_bar_vpn">VPN</string>
     <string name="status_bar_roaming">Roaming</string>
 
+    <!-- Music tile -->
+    <string name="quick_settings_music_label">Music</string>
+    <string name="quick_settings_music_play">Play</string>
+    <string name="quick_settings_music_pause">Pause</string>
+
     <!-- Immersive tile -->
     <string name="quick_settings_immersive_tile">Immersive mode</string>
     <string name="quick_settings_immersive_tile_statusbar">Immersive statusbar</string>
