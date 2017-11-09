@@ -4575,6 +4575,21 @@ public final class Settings {
         public static final String STATUS_BAR_SHOW_BATTERY_PERCENT = "status_bar_show_battery_percent";
 
         /**
+         * Screen stabilization parameters
+         * @hide
+         */
+        public static final String STABILIZATION_ENABLE = "stabilization_enable";
+
+        /** @hide */
+        public static final String STABILIZATION_VELOCITY_FRICTION = "stabilization_velocity_friction";
+
+        /** @hide */
+        public static final String STABILIZATION_POSITION_FRICTION = "stabilization_position_friction";
+
+        /** @hide */
+        public static final String STABILIZATION_VELOCITY_AMPLITUDE = "stabilization_velocity_amplitude";
+
+        /**
          * Show 4G instead of LTE
          * @hide
          */
