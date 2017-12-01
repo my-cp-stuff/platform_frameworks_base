@@ -4890,6 +4890,16 @@ public final class Settings {
         public static final String AMBIENT_WAKE_GESTURES = "ambient_wake_gestures";
 
         /**
+         * Check the proximity sensor during wakeup
+         * @hide
+         */
+        public static final String PROXIMITY_ON_WAKE = "proximity_on_wake";
+
+        /** @hide */
+        public static final Validator PROXIMITY_ON_WAKE_VALIDATOR =
+                BOOLEAN_VALIDATOR;
+
+        /**
          * IMPORTANT: If you add a new public settings you also have to add it to
          * PUBLIC_SETTINGS below. If the new setting is hidden you have to add
          * it to PRIVATE_SETTINGS below. Also add a validator that can validate
@@ -5427,6 +5437,7 @@ public final class Settings {
             PRIVATE_SETTINGS.add(DEVICE_PROXI_CHECK_ENABLED);
             PRIVATE_SETTINGS.add(DEVICE_GESTURE_FEEDBACK_ENABLED);
             PRIVATE_SETTINGS.add(DEVICE_FEATURE_SETTINGS);
+            PRIVATE_SETTINGS.add(PROXIMITY_ON_WAKE);
         }
 
         /**
@@ -5558,6 +5569,7 @@ public final class Settings {
             VALIDATORS.put(DEVICE_PROXI_CHECK_ENABLED, DEVICE_PROXI_CHECK_ENABLED_VALIDATOR);
             VALIDATORS.put(DEVICE_GESTURE_FEEDBACK_ENABLED, DEVICE_GESTURE_FEEDBACK_ENABLED_VALIDATOR);
             VALIDATORS.put(DEVICE_FEATURE_SETTINGS, DEVICE_FEATURE_SETTINGS_VALIDATOR);
+            VALIDATORS.put(PROXIMITY_ON_WAKE, PROXIMITY_ON_WAKE_VALIDATOR);
         }
 
         /**
