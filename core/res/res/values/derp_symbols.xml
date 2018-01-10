@@ -54,4 +54,7 @@
 
   <java-symbol type="array" name="config_customPermissionsList" />
 
+  <!-- Seconds after which power button torch times out when proximity sensor is covered -->
+  <java-symbol type="integer" name="config_flashlightProximityTimeout" />
+
 </resources>
