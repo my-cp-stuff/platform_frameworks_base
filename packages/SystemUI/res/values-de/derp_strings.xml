@@ -158,4 +158,7 @@
     <string name="quick_settings_locale_label">Sprache</string>
     <string name="quick_settings_locale_more_locales_toast">Bitte konfiguriere weitere Sprachen, um diese Funktion verwenden zu können</string>
 
+    <!-- CPUInfo tile -->
+    <string name="quick_settings_cpuinfo_label">CPU Info</string>
+
 </resources>
