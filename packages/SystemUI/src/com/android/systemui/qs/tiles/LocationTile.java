@@ -73,6 +73,11 @@ public class LocationTile extends QSTileImpl<BooleanState> {
     }
 
     @Override
+    public boolean isDualTarget() {
+        return true;
+    }
+
+    @Override
     public BooleanState newTileState() {
         return new BooleanState();
     }
