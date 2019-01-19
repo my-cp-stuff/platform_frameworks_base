@@ -50,6 +50,9 @@
   <!-- Whether to show a custom view for FOD -->
   <java-symbol type="bool" name="config_needCustomFODView" />
 
+  <!-- Toast animation -->
+  <java-symbol type="style" name="Animation.Toast.Material" />
+
   <!-- Whether to allow process with media UID to access CameraServiceProxy -->
   <java-symbol type="bool" name="config_allowMediaUidForCameraServiceProxy" />
 
