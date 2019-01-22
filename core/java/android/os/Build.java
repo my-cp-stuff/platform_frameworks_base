@@ -1003,8 +1003,7 @@ public class Build {
     public static final String FINGERPRINT = deriveFingerprint();
 
     /** @hide */
-    public static final String DERP_FINGERPRINT = SystemProperties.get("ro.derp.fingerprint",
-            deriveFingerprint());
+    public static final String DERP_FINGERPRINT = getString("ro.build.date");
 
     /**
      * Some devices split the fingerprint components between multiple
