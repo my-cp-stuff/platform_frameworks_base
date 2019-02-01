@@ -7835,6 +7835,24 @@ public final class Settings {
 
         private static final Validator DOZE_ALWAYS_ON_VALIDATOR = BOOLEAN_VALIDATOR;
 
+         /**
+         * Whether to enable DOZE only when charging
+         * @hide
+         */
+        public static final String DOZE_ON_CHARGE = "doze_on_charge";
+
+        private static final Validator DOZE_ON_CHARGE_VALIDATOR =
+                BOOLEAN_VALIDATOR;
+
+        /**
+         * hidden stting of the current atate of DOZE only when charging
+         * @hide
+         */
+        public static final String DOZE_ON_CHARGE_NOW = "doze_on_charge_now";
+
+        private static final Validator DOZE_ON_CHARGE_NOW_VALIDATOR =
+                ANY_STRING_VALIDATOR;
+
         /**
          * Whether the device should pulse on pick up gesture.
          * @hide
@@ -9192,6 +9210,8 @@ public final class Settings {
             QS_TILES,
             DOZE_ENABLED,
             DOZE_ALWAYS_ON,
+            DOZE_ON_CHARGE,
+            DOZE_ON_CHARGE_NOW,
             DOZE_PICK_UP_GESTURE,
             DOZE_DOUBLE_TAP_GESTURE,
             DOZE_TAP_SCREEN_GESTURE,
@@ -9366,6 +9386,8 @@ public final class Settings {
             VALIDATORS.put(QS_TILES, QS_TILES_VALIDATOR);
             VALIDATORS.put(DOZE_ENABLED, DOZE_ENABLED_VALIDATOR);
             VALIDATORS.put(DOZE_ALWAYS_ON, DOZE_ALWAYS_ON_VALIDATOR);
+            VALIDATORS.put(DOZE_ON_CHARGE, DOZE_ON_CHARGE_VALIDATOR);
+            VALIDATORS.put(DOZE_ON_CHARGE_NOW, DOZE_ON_CHARGE_NOW_VALIDATOR);
             VALIDATORS.put(DOZE_PICK_UP_GESTURE, DOZE_PICK_UP_GESTURE_VALIDATOR);
             VALIDATORS.put(DOZE_DOUBLE_TAP_GESTURE, DOZE_DOUBLE_TAP_GESTURE_VALIDATOR);
             VALIDATORS.put(DOZE_TAP_SCREEN_GESTURE, DOZE_TAP_SCREEN_GESTURE_VALIDATOR);
