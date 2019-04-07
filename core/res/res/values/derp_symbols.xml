@@ -100,4 +100,7 @@
   <java-symbol type="string" name="config_lightFontFamily" />
   <java-symbol type="string" name="config_regularFontFamily" />
 
+  <!-- Bootleg unneccesary gradient declaration | Just for our shishu bars -->
+  <java-symbol type="color" name="bootleg_accent_gradient_end_color" />
+
 </resources>
