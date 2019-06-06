@@ -5053,6 +5053,15 @@ public final class Settings {
         public static final String BACK_SWIPE_EXTENDED = "back_swipe_extended";
 
         /**
+         * Whether to show charging animation
+         * @hide
+         */
+        public static final String CHARGING_ANIMATION = "charging_animation";
+
+        /** @hide */
+        private static final Validator CHARGING_ANIMATION_VALIDATOR = BOOLEAN_VALIDATOR;
+
+        /**
          * Settings to backup. This is here so that it's in the same place as the settings
          * keys and easy to update.
          *
@@ -5138,6 +5147,7 @@ public final class Settings {
             BACK_GESTURE_BLOCK_IME,
             NAVIGATION_BAR_ARROW_KEYS,
             STATUSBAR_PRIVACY_INDICATORS,
+            CHARGING_ANIMATION,
         };
 
         /**
@@ -5403,6 +5413,7 @@ public final class Settings {
             VALIDATORS.put(BACK_GESTURE_BLOCK_IME,BACK_GESTURE_BLOCK_IME_VALIDATOR);
             VALIDATORS.put(NAVIGATION_BAR_ARROW_KEYS, NAVIGATION_BAR_ARROW_KEYS_VALIDATOR);
             VALIDATORS.put(STATUSBAR_PRIVACY_INDICATORS, STATUSBAR_PRIVACY_INDICATORS_VALIDATOR);
+            VALIDATORS.put(CHARGING_ANIMATION, CHARGING_ANIMATION_VALIDATOR);
         }
 
         /**
