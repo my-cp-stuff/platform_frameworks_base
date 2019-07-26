@@ -5724,6 +5724,7 @@ public final class Settings {
          * @hide
          */
         public static final String FINGERPRINT_SUCCESS_VIB = "fingerprint_success_vib";
+
         /** @hide */
         public static final Validator FINGERPRINT_SUCCESS_VIB_VALIDATOR = BOOLEAN_VALIDATOR;
 
@@ -5733,8 +5734,18 @@ public final class Settings {
          * @hide
          */
         public static final String FINGERPRINT_ERROR_VIB = "fingerprint_error_vib";
+
         /** @hide */
         public static final Validator FINGERPRINT_ERROR_VIB_VALIDATOR = BOOLEAN_VALIDATOR;
+
+        /**
+         * Whether to show heads up only for dialer and sms apps
+         * @hide
+         */
+        public static final String LESS_BORING_HEADS_UP = "less_boring_heads_up";
+
+        /** @hide */
+        private static final Validator LESS_BORING_HEADS_UP_VALIDATOR = BOOLEAN_VALIDATOR;
 
         /**
          * Settings to backup. This is here so that it's in the same place as the settings
@@ -5843,6 +5854,7 @@ public final class Settings {
             FLASHLIGHT_ON_CALL,
             STATUS_BAR_BRIGHTNESS_CONTROL,
             HEADSET_CONNECT_PLAYER,
+            LESS_BORING_HEADS_UP,
         };
 
         /**
@@ -6025,6 +6037,7 @@ public final class Settings {
             PRIVATE_SETTINGS.add(QS_BLUR_ENABLED);
             PRIVATE_SETTINGS.add(STATUS_BAR_BRIGHTNESS_CONTROL);
             PRIVATE_SETTINGS.add(HEADSET_CONNECT_PLAYER);
+            PRIVATE_SETTINGS.add(LESS_BORING_HEADS_UP);
         }
 
         /**
@@ -6165,6 +6178,7 @@ public final class Settings {
             VALIDATORS.put(INCALL_FEEDBACK_VIBRATE, INCALL_FEEDBACK_VIBRATE_VALIDATOR);
             VALIDATORS.put(FLASHLIGHT_ON_CALL, FLASHLIGHT_ON_CALL_VALIDATOR);
             VALIDATORS.put(HEADSET_CONNECT_PLAYER, HEADSET_CONNECT_PLAYER_VALIDATOR);
+            VALIDATORS.put(LESS_BORING_HEADS_UP, LESS_BORING_HEADS_UP_VALIDATOR);
         }
 
         /**

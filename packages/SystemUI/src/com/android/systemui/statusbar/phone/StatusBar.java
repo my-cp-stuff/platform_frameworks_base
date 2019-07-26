@@ -2081,6 +2081,9 @@ public class StatusBar extends SystemUI implements DemoMode, TunerService.Tunabl
             resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.QS_BLUR_ENABLED),
                     false, this, UserHandle.USER_ALL);
+            resolver.registerContentObserver(Settings.System.getUriFor(
+                    Settings.System.LESS_BORING_HEADS_UP),
+                    false, this, UserHandle.USER_ALL);
         }
 
         @Override
@@ -2122,6 +2125,8 @@ public class StatusBar extends SystemUI implements DemoMode, TunerService.Tunabl
             } else if (uri.equals(Settings.System.getUriFor(
                     Settings.System.QS_BLUR_ENABLED))) {
                 setQsBlur();
+            } else if (uri.equals(Settings.System.getUriFor(Settings.System.LESS_BORING_HEADS_UP))) {
+                setUseLessBoringHeadsUp();
             }
         }
 
@@ -2134,8 +2139,8 @@ public class StatusBar extends SystemUI implements DemoMode, TunerService.Tunabl
             setGestureNavOptions();
             setMediaHeadsup();
             setQsBatteryPercentMode();
-            setQsRowsColumns();
             setQsBlur();
+            setUseLessBoringHeadsUp();
         }
     }
 
@@ -2201,6 +2206,13 @@ public class StatusBar extends SystemUI implements DemoMode, TunerService.Tunabl
         mBlurEnabled = Settings.System.getIntForUser(
                 mContext.getContentResolver(), Settings.System.QS_BLUR_ENABLED, 1,
                 UserHandle.USER_CURRENT) == 1;
+    }
+
+    private void setUseLessBoringHeadsUp() {
+        boolean lessBoringHeadsUp = Settings.System.getIntForUser(mContext.getContentResolver(),
+                Settings.System.LESS_BORING_HEADS_UP, 0,
+                UserHandle.USER_CURRENT) == 1;
+        mNotificationInterruptionStateProvider.setUseLessBoringHeadsUp(lessBoringHeadsUp);
     }
 
     /**
@@ -5329,6 +5341,16 @@ public class StatusBar extends SystemUI implements DemoMode, TunerService.Tunabl
 
     public @TransitionMode int getStatusBarMode() {
         return mStatusBarMode;
+    }
+
+    private RegisterStatusBarResult getRegisterStatusBarResult() {
+        RegisterStatusBarResult result = null;
+        try {
+            result = mBarService.registerStatusBar(mCommandQueue);
+        } catch (RemoteException ex) {
+            ex.rethrowFromSystemServer();
+        }
+        return result;
     }
 
     private void updateNavigationBar(@Nullable RegisterStatusBarResult result, boolean init) {
