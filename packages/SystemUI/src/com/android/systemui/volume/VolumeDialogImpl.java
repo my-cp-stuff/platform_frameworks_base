@@ -63,6 +63,7 @@ import android.os.VibrationEffect;
 import android.provider.Settings;
 import android.provider.Settings.Global;
 import android.text.InputFilter;
+import android.text.TextUtils;
 import android.util.Log;
 import android.util.Slog;
 import android.util.SparseBooleanArray;
@@ -193,6 +194,8 @@ public class VolumeDialogImpl implements VolumeDialog,
     private boolean mExpanded;
     private boolean mShowingMediaDevices;
 
+    private boolean mHasAlertSlider;
+
     private float mElevation;
     private float mHeight, mWidth, mSpacer;
 
@@ -212,6 +215,7 @@ public class VolumeDialogImpl implements VolumeDialog,
                 Prefs.getBoolean(context, Prefs.Key.HAS_SEEN_ODI_CAPTIONS_TOOLTIP, false);
         mLeftVolumeRocker = mContext.getResources().getBoolean(R.bool.config_audioPanelOnLeftSide);
         mVibrateOnSlider = mContext.getResources().getBoolean(R.bool.config_vibrateOnIconAnimation);
+        mHasAlertSlider = mContext.getResources().getBoolean(com.android.internal.R.bool.config_hasAlertSlider);
         mElevation = mContext.getResources().getDimension(R.dimen.volume_dialog_elevation);
         mSpacer = mContext.getResources().getDimension(R.dimen.volume_dialog_row_spacer);
 
@@ -355,6 +359,9 @@ public class VolumeDialogImpl implements VolumeDialog,
             mDialogView.removeView(mODICaptionsTooltipViewStub);
             mODICaptionsTooltipViewStub = null;
         }else if (mODICaptionsTooltipViewStub != null){
+            if (mHasAlertSlider) {
+                mRinger.setVisibility(View.GONE);
+            }
             if(!isAudioPanelOnLeftSide()) {
                 mRinger.setForegroundGravity(Gravity.BOTTOM | Gravity.RIGHT);
             } else {
