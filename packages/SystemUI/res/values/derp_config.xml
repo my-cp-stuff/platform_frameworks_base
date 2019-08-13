@@ -35,4 +35,7 @@
     <!-- Max visible system icons -->
     <integer name="config_maxVisibleStatusIconContainer">6</integer>
 
+    <!-- Asus stitch editor component name -->
+    <string name="config_stitchEditor">com.asus.stitchimage/com.asus.stitchimage.editor.ScreenshotEditorActivity</string>
+
 </resources>
