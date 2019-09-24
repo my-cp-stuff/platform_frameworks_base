@@ -457,6 +457,8 @@ public class NotificationPanelView extends PanelView implements
     private NotificationLightsView mPulseLightsView;
     private boolean mPulseLightHandled;
     public static final String CANCEL_NOTIFICATION_PULSE_ACTION = "cancel_notification_pulse";
+    private int mStatusBarHeaderHeight;
+    private GestureDetector mDoubleTapGesture;
     private boolean mAmbientPulseLightRunning;
 
     @Inject
@@ -504,6 +506,16 @@ public class NotificationPanelView extends PanelView implements
             @Override
             public boolean onDoubleTap(MotionEvent e) {
                 mPowerManager.goToSleep(SystemClock.uptimeMillis());
+                return true;
+            }
+        });
+        mDoubleTapGesture = new GestureDetector(mContext, new GestureDetector.SimpleOnGestureListener() {
+            @Override
+            public boolean onDoubleTap(MotionEvent e) {
+                PowerManager pm = (PowerManager) mContext.getSystemService(Context.POWER_SERVICE);
+                if(pm != null) {
+                    pm.goToSleep(e.getEventTime());
+                }
                 return true;
             }
         });
@@ -619,6 +631,8 @@ public class NotificationPanelView extends PanelView implements
                 com.android.internal.R.dimen.status_bar_height);
         mHeadsUpInset = statusbarHeight + getResources().getDimensionPixelSize(
                 R.dimen.heads_up_status_bar_padding);
+        mStatusBarHeaderHeight = getResources().getDimensionPixelSize(
+                R.dimen.status_bar_height);
     }
 
     /**
@@ -1275,6 +1289,11 @@ public class NotificationPanelView extends PanelView implements
         // pull down QS or expand the shade.
         if (mStatusBar.isBouncerShowingScrimmed()) {
             return false;
+	}
+        if (!mQsExpanded
+                && mDoubleTapToSleepEnabled
+                && event.getY() < mStatusBarHeaderHeight) {
+            mDoubleTapGesture.onTouchEvent(event);
         }
 
         // Make sure the next touch won't the blocked after the current ends.
@@ -3657,6 +3676,10 @@ public class NotificationPanelView extends PanelView implements
 
     public void setOnReinflationListener(Runnable onReinflationListener) {
         mOnReinflationListener = onReinflationListener;
+    }
+
+    public void updateDoubleTapToSleep(boolean doubleTapToSleepEnabled) {
+        mDoubleTapToSleepEnabled = doubleTapToSleepEnabled;
     }
 
     public void stopNotificationPulse() {

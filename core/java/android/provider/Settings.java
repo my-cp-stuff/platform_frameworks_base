@@ -4890,6 +4890,16 @@ public final class Settings {
         private static final Validator QS_BATTERY_MODE_VALIDATOR = BOOLEAN_VALIDATOR;
 
         /**
+         *  Enable statusbar double tap gesture on to put device to sleep
+         * @hide
+         */
+        public static final String DOUBLE_TAP_SLEEP_GESTURE = "double_tap_sleep_gesture";
+
+        /** @hide */
+        private static final Validator DOUBLE_TAP_SLEEP_GESTURE_VALIDATOR =
+                BOOLEAN_VALIDATOR;
+
+        /**
          * Whether or not to show the battery percentage in the status bar
          *    0: Hide the battery percentage (default)
          *    1: Display the battery percentage inside the icon
@@ -4990,6 +5000,7 @@ public final class Settings {
             NOTIFICATION_LIGHT_PULSE,
             BACK_GESTURE_HEIGHT,
             STATUS_BAR_LOGO,
+            DOUBLE_TAP_SLEEP_GESTURE,
         };
 
         /**
@@ -5124,6 +5135,7 @@ public final class Settings {
             PRIVATE_SETTINGS.add(USE_OLD_MOBILETYPE);
             PRIVATE_SETTINGS.add(LOCKSCREEN_MEDIA_METADATA);
             PRIVATE_SETTINGS.add(STATUS_BAR_LOGO);
+            PRIVATE_SETTINGS.add(DOUBLE_TAP_SLEEP_GESTURE);
         }
 
         /**
@@ -5237,6 +5249,7 @@ public final class Settings {
             VALIDATORS.put(SCREENSHOT_SOUND, SCREENSHOT_SOUND_VALIDATOR);
             VALIDATORS.put(QS_PANEL_BG_ALPHA, QS_PANEL_BG_ALPHA_VALIDATOR);
             VALIDATORS.put(BACK_GESTURE_HEIGHT, BACK_GESTURE_HEIGHT_VALIDATOR);
+            VALIDATORS.put(DOUBLE_TAP_SLEEP_GESTURE, DOUBLE_TAP_SLEEP_GESTURE_VALIDATOR);
         }
 
         /**
