@@ -69,6 +69,7 @@ import com.android.server.wm.WindowManagerInternal;
 
 import java.io.FileDescriptor;
 import java.io.PrintWriter;
+import java.util.Objects;
 import java.util.Map;
 
 import static android.app.UiModeManager.MODE_NIGHT_AUTO;
@@ -416,6 +417,10 @@ final class UiModeManagerService extends SystemService {
             mNightModeOverride = defaultNightMode;
         }
 
+        final String newTheme = Integer.toString(mNightMode);
+        if (!Objects.equals(SystemProperties.get(SYSTEM_PROPERTY_DEVICE_THEME), mNightMode)) {
+            SystemProperties.set(SYSTEM_PROPERTY_DEVICE_THEME, newTheme);
+        }
         return oldNightMode != mNightMode;
     }
 
