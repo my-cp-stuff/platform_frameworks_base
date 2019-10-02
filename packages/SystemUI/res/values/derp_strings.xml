@@ -236,4 +236,7 @@
     <!--Screenrecord Tile-->
     <string name="screenrecorder_title_tile">Screenrecord</string>
 
+    <!-- DerpQuest Settings Tile -->
+    <string name="quick_settings_derp_label">DerpQuest</string>
+
 </resources>
