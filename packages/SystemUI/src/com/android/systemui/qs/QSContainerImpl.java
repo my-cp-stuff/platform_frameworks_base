@@ -25,15 +25,22 @@ import android.database.ContentObserver;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.graphics.Point;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.TransitionDrawable;
+import android.graphics.Color;
+import android.graphics.PorterDuff.Mode;
 import android.os.Handler;
 import android.os.UserHandle;
 import android.provider.Settings;
 import android.util.AttributeSet;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 
 import com.android.systemui.Dependency;
 import com.android.systemui.R;
+import com.android.systemui.omni.StatusBarHeaderMachine;
 import com.android.systemui.qs.customize.QSCustomizer;
 import com.android.systemui.tuner.TunerService;
 import com.android.systemui.tuner.TunerService.Tunable;
@@ -42,6 +49,7 @@ import com.android.systemui.tuner.TunerService.Tunable;
  * Wrapper view with background which contains {@link QSPanel} and {@link BaseStatusBarHeader}
  */
 public class QSContainerImpl extends FrameLayout implements
+        StatusBarHeaderMachine.IStatusBarHeaderMachineObserver,
         Tunable {
 
     private final Point mSizePoint = new Point();
@@ -63,6 +71,13 @@ public class QSContainerImpl extends FrameLayout implements
 
     private Drawable mQsBackGround;
 
+    // omni additions start
+    private boolean mHeaderImageEnabled;
+    private ImageView mBackgroundImage;
+    private StatusBarHeaderMachine mStatusBarHeaderMachine;
+    private Drawable mCurrentBackground;
+    private boolean mLandscape;
+
     private boolean mStatusBarBgTransparent;
     private static final String QS_STATUS_BAR_BG_TRANSPARENCY =  "qs_status_bar_bg_transparency";
 
@@ -71,6 +86,7 @@ public class QSContainerImpl extends FrameLayout implements
         Handler mHandler = new Handler();
         SettingsObserver settingsObserver = new SettingsObserver(mHandler);
         settingsObserver.observe();
+        mStatusBarHeaderMachine = new StatusBarHeaderMachine(context);
     }
 
     @Override
@@ -95,6 +111,8 @@ public class QSContainerImpl extends FrameLayout implements
     @Override
     protected void onAttachedToWindow() {
         super.onAttachedToWindow();
+        mStatusBarHeaderMachine.addObserver(this);
+        mStatusBarHeaderMachine.updateEnablement();
         final TunerService tunerService = Dependency.get(TunerService.class);
         tunerService.addTunable(this, QS_STATUS_BAR_BG_TRANSPARENCY);
     }
@@ -102,6 +120,7 @@ public class QSContainerImpl extends FrameLayout implements
     @Override
     protected void onDetachedFromWindow() {
         super.onDetachedFromWindow();
+        mStatusBarHeaderMachine.removeObserver(this);
         final TunerService tunerService = Dependency.get(TunerService.class);
         tunerService.removeTunable(this);
     }
@@ -110,7 +129,17 @@ public class QSContainerImpl extends FrameLayout implements
     protected void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
         setBackgroundGradientVisibility(newConfig);
+        mLandscape = newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE;
+
+        // Hide the backgrounds when in landscape mode.
+        if (mLandscape || mForceHideQsStatusBar) {
+            mBackgroundGradient.setVisibility(View.INVISIBLE);
+        } else if (!mQsBackgroundAlpha) {
+            mBackgroundGradient.setVisibility(View.VISIBLE);
+        }
+
         updateResources();
+        updateStatusbarVisibility();
         mSizePoint.set(0, 0); // Will be retrieved on next measure pass.
     }
 
@@ -212,13 +241,26 @@ public class QSContainerImpl extends FrameLayout implements
     }
 
     private void updateResources() {
-        LayoutParams layoutParams = (LayoutParams) mQSPanel.getLayoutParams();
-        layoutParams.topMargin = mContext.getResources().getDimensionPixelSize(
-                com.android.internal.R.dimen.quick_qs_offset_height);
+        int topMargin = mContext.getResources().getDimensionPixelSize(
+                com.android.internal.R.dimen.quick_qs_offset_height) + (mHeaderImageEnabled ?
+                mContext.getResources().getDimensionPixelSize(R.dimen.qs_header_image_offset) : 0);
 
-        mQSPanel.setLayoutParams(layoutParams);
+        int statusBarSideMargin = mHeaderImageEnabled ? mContext.getResources().getDimensionPixelSize(
+                R.dimen.qs_header_image_side_margin) : 0;
 
-        if (mStatusBarBgTransparent) {
+        // always add the margin below the statusbar with or without image
+        int statusBarBottomMargin = mContext.getResources().getDimensionPixelSize(
+                R.dimen.qs_header_image_bottom_margin);
+
+        ((LayoutParams) mQSPanel.getLayoutParams()).topMargin = topMargin + statusBarBottomMargin;
+        mQSPanel.setLayoutParams(mQSPanel.getLayoutParams());
+
+        ViewGroup.MarginLayoutParams lp = (ViewGroup.MarginLayoutParams) mStatusBarBackground.getLayoutParams();
+        lp.height = topMargin;
+        lp.setMargins(statusBarSideMargin, 0, statusBarSideMargin, 0);
+        mStatusBarBackground.setLayoutParams(lp);
+
+        if (mHeaderImageEnabled || mStatusBarBgTransparent) {
             mStatusBarBackground.setBackgroundColor(Color.TRANSPARENT);
         } else {
             mStatusBarBackground.setBackgroundColor(Color.BLACK);
@@ -287,6 +329,90 @@ public class QSContainerImpl extends FrameLayout implements
             getDisplay().getRealSize(mSizePoint);
         }
         return mSizePoint.y;
+    }
+
+    @Override
+    public void updateHeader(final Drawable headerImage, final boolean force) {
+        post(new Runnable() {
+            public void run() {
+                doUpdateStatusBarCustomHeader(headerImage, force);
+            }
+        });
+    }
+
+    @Override
+    public void disableHeader() {
+        post(new Runnable() {
+            public void run() {
+                mCurrentBackground = null;
+                mBackgroundImage.setVisibility(View.GONE);
+                mHeaderImageEnabled = false;
+                updateResources();
+                updateStatusbarVisibility();
+            }
+        });
+    }
+
+    @Override
+    public void refreshHeader() {
+        post(new Runnable() {
+            public void run() {
+                doUpdateStatusBarCustomHeader(mCurrentBackground, true);
+            }
+        });
+    }
+
+    private void doUpdateStatusBarCustomHeader(final Drawable next, final boolean force) {
+        if (next != null) {
+            mBackgroundImage.setVisibility(View.VISIBLE);
+            mCurrentBackground = next;
+            setNotificationPanelHeaderBackground(next, force);
+            mHeaderImageEnabled = true;
+            updateResources();
+            updateStatusbarVisibility();
+        } else {
+            mCurrentBackground = null;
+            mBackgroundImage.setVisibility(View.GONE);
+            mHeaderImageEnabled = false;
+            updateResources();
+            updateStatusbarVisibility();
+        }
+    }
+
+    private void setNotificationPanelHeaderBackground(final Drawable dw, final boolean force) {
+        if (mBackgroundImage.getDrawable() != null && !force) {
+            Drawable[] arrayDrawable = new Drawable[2];
+            arrayDrawable[0] = mBackgroundImage.getDrawable();
+            arrayDrawable[1] = dw;
+
+            TransitionDrawable transitionDrawable = new TransitionDrawable(arrayDrawable);
+            transitionDrawable.setCrossFadeEnabled(true);
+            mBackgroundImage.setImageDrawable(transitionDrawable);
+            transitionDrawable.startTransition(1000);
+        } else {
+            mBackgroundImage.setImageDrawable(dw);
+        }
+        applyHeaderBackgroundShadow();
+    }
+
+    private void applyHeaderBackgroundShadow() {
+        final int headerShadow = Settings.System.getIntForUser(mContext.getContentResolver(),
+                Settings.System.STATUS_BAR_CUSTOM_HEADER_SHADOW, 0,
+                UserHandle.USER_CURRENT);
+
+        if (mCurrentBackground != null) {
+            if (headerShadow != 0) {
+                int shadow = Color.argb(headerShadow, 0, 0, 0);
+                mCurrentBackground.setColorFilter(shadow, Mode.SRC_ATOP);
+            } else {
+                mCurrentBackground.setColorFilter(null);
+            }
+        }
+    }
+
+    private void updateStatusbarVisibility() {
+        boolean shouldHideStatusbar = (mLandscape || mForceHideQsStatusBar) && !mHeaderImageEnabled;
+        mStatusBarBackground.setVisibility(shouldHideStatusbar ? View.INVISIBLE : View.VISIBLE);
     }
 
     @Override

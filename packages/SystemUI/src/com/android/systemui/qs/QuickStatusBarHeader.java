@@ -156,6 +156,9 @@ public class QuickStatusBarHeader extends RelativeLayout implements
 
     private PrivacyItemController mPrivacyItemController;
 
+    private boolean mLandscape;
+    private boolean mHeaderImageEnabled;
+
     private class SettingsObserver extends ContentObserver {
         SettingsObserver(Handler handler) {
             super(handler);
@@ -168,6 +171,9 @@ public class QuickStatusBarHeader extends RelativeLayout implements
                     this, UserHandle.USER_ALL);
             resolver.registerContentObserver(Settings.System
                     .getUriFor(Settings.System.STATUS_BAR_BATTERY_STYLE), false,
+                    this, UserHandle.USER_ALL);
+            resolver.registerContentObserver(Settings.System
+                    .getUriFor(Settings.System.STATUS_BAR_CUSTOM_HEADER), false,
                     this, UserHandle.USER_ALL);
             }
 
@@ -293,6 +299,7 @@ public class QuickStatusBarHeader extends RelativeLayout implements
         mBatteryRemainingIcon.setPercentShowMode(BatteryMeterView.MODE_ON);
         mRingerModeTextView.setSelected(true);
         mNextAlarmTextView.setSelected(true);
+
         updateSettings();
 
         Dependency.get(TunerService.class).addTunable(this,
@@ -302,6 +309,7 @@ public class QuickStatusBarHeader extends RelativeLayout implements
         // Change the ignored slots when DeviceConfig flag changes
         DeviceConfig.addOnPropertyChangedListener(DeviceConfig.NAMESPACE_PRIVACY,
                 mContext.getMainExecutor(), mPropertyListener);
+        updateSettings();
     }
 
     private List<String> getIgnoredIconSlots() {
@@ -397,12 +405,14 @@ public class QuickStatusBarHeader extends RelativeLayout implements
     @Override
     protected void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
+        mLandscape = newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE;
         updateResources();
 
         // Update color schemes in landscape to use wallpaperTextColor
         boolean shouldUseWallpaperTextColor =
                 newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE;
         mClockView.useWallpaperTextColor(shouldUseWallpaperTextColor);
+        updateStatusbarProperties();
     }
 
     @Override
@@ -420,7 +430,6 @@ public class QuickStatusBarHeader extends RelativeLayout implements
                 com.android.internal.R.dimen.status_bar_height);
         int qqsHeight = mContext.getResources().getDimensionPixelSize(
                 R.dimen.qs_quick_header_panel_height);
-
         setMinimumHeight(sbHeight + qqsHeight);
     }
 
@@ -433,18 +442,24 @@ public class QuickStatusBarHeader extends RelativeLayout implements
                 resources.getDimensionPixelSize(R.dimen.qs_header_tooltip_height);
         mHeaderTextContainerView.setLayoutParams(mHeaderTextContainerView.getLayoutParams());*/
 
-        mSystemIconsView.getLayoutParams().height = resources.getDimensionPixelSize(
-                com.android.internal.R.dimen.quick_qs_offset_height);
+        int topMargin = resources.getDimensionPixelSize(
+                com.android.internal.R.dimen.quick_qs_offset_height) + (mHeaderImageEnabled ?
+                resources.getDimensionPixelSize(R.dimen.qs_header_image_offset) : 0);
+
+        mSystemIconsView.getLayoutParams().height = topMargin;
         mSystemIconsView.setLayoutParams(mSystemIconsView.getLayoutParams());
 
         FrameLayout.LayoutParams lp = (FrameLayout.LayoutParams) getLayoutParams();
         if (mQsDisabled) {
-            lp.height = resources.getDimensionPixelSize(
-                    com.android.internal.R.dimen.quick_qs_offset_height);
+            lp.height = topMargin;
         } else {
-            lp.height = Math.max(getMinimumHeight(),
-                    resources.getDimensionPixelSize(
-                            com.android.internal.R.dimen.quick_qs_total_height));
+            int qsHeight = resources.getDimensionPixelSize(
+                    com.android.internal.R.dimen.quick_qs_total_height);
+
+            if (mHeaderImageEnabled) {
+                qsHeight += resources.getDimensionPixelSize(R.dimen.qs_header_image_offset);
+            }
+            lp.height = Math.max(getMinimumHeight(), qsHeight);
         }
 
         setLayoutParams(lp);
@@ -455,6 +470,11 @@ public class QuickStatusBarHeader extends RelativeLayout implements
     }
 
     private void updateSettings() {
+        mHeaderImageEnabled = Settings.System.getIntForUser(getContext().getContentResolver(),
+                Settings.System.STATUS_BAR_CUSTOM_HEADER, 0,
+                UserHandle.USER_CURRENT) == 1;
+        updateResources();
+        updateStatusbarProperties();
         updateQSBatteryMode();
         updateSBBatteryStyle();
         updateResources();
@@ -754,5 +774,11 @@ public class QuickStatusBarHeader extends RelativeLayout implements
     public void onTuningChanged(String key, String newValue) {
         mClockView.setClockVisibleByUser(!StatusBarIconController.getIconBlacklist(newValue)
                 .contains("clock"));
+    }
+
+    // Update color schemes in landscape to use wallpaperTextColor
+    private void updateStatusbarProperties() {
+        boolean shouldUseWallpaperTextColor = mLandscape && !mHeaderImageEnabled;
+        mClockView.useWallpaperTextColor(shouldUseWallpaperTextColor);
     }
 }
