@@ -32,4 +32,7 @@
     <integer name="config_maxVisibleNotificationIcons">@*android:integer/config_maxVisibleNotificationIcons</integer>
     <integer name="config_maxVisibleNotificationIconsWhenDark">@*android:integer/config_maxVisibleNotificationIconsWhenDark</integer>
 
+    <!-- Max visible system icons -->
+    <integer name="config_maxVisibleStatusIconContainer">6</integer>
+
 </resources>
