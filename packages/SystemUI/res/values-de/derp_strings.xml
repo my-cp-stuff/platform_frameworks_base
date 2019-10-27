@@ -33,4 +33,10 @@
     <string name="quick_settings_network_adb_label">ADB über Netzwerk</string>
     <string name="quick_settings_network_adb_toast">USB debugging ist nicht aktiviert</string>
 
+    <!-- Screen recorder -->
+    <string name="screenrecord_stopdot_label">Stop dot anzeigen</string>
+
+    <!-- Power menu item for taking a screenshot [CHAR LIMIT=20]-->
+    <string name="global_action_screenshot_cust">"Screenshot/Rec"</string>
+
 </resources>
