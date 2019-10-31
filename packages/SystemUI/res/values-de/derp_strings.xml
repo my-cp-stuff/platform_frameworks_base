@@ -233,4 +233,7 @@
     <!-- Alerting notification header label -->
     <string name="notification_section_header_alerting">Alarmierende Benachrichtigungen</string>
 
+    <!--Screenrecord Tile-->
+    <string name="screenrecorder_title_tile">Bildschirmaufnahme</string>
+
 </resources>
