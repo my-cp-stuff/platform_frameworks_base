@@ -1291,7 +1291,7 @@ public class NotificationPanelView extends PanelView implements
         if (mStatusBar.isBouncerShowingScrimmed()) {
             return false;
 	}
-        if (!mQsExpanded
+        if (!mQsExpanded && !mPulsing && !mDozing
                 && mDoubleTapToSleepEnabled
                 && event.getY() < mStatusBarHeaderHeight) {
             if (mDoubleTapGesture.onTouchEvent(event)) {
