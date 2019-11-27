@@ -31,4 +31,8 @@
     <!-- System icon area layout weight -->
     <item name="system_icon_area_weight" format="float" type="integer">1</item>
 
+    <dimen name="status_bar_mobile_signal_with_type_width">22dp</dimen>
+    <dimen name="status_bar_mobile_signal_width">16dp</dimen>
+    <dimen name="status_bar_mobile_type_height">10dp</dimen>
+
 </resources>
