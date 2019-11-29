@@ -16,6 +16,8 @@
 
 package com.android.systemui;
 
+import com.android.systemui.derp.DerpSettingsService;
+import com.android.systemui.derp.DerpSettingsServiceImpl;
 import com.android.systemui.appops.AppOpsController;
 import com.android.systemui.appops.AppOpsControllerImpl;
 import com.android.systemui.classifier.FalsingManagerProxy;
@@ -241,4 +243,9 @@ public abstract class DependencyBinder {
      */
     @Binds
     public abstract FalsingManager provideFalsingmanager(FalsingManagerProxy falsingManagerImpl);
+
+    /**
+     */
+    @Binds
+    public abstract DerpSettingsService provideDerpSettingsService(DerpSettingsServiceImpl controllerImpl);
 }

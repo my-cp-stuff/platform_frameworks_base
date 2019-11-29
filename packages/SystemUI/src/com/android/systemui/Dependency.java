@@ -30,6 +30,7 @@ import com.android.internal.statusbar.IStatusBarService;
 import com.android.internal.util.Preconditions;
 import com.android.keyguard.clock.ClockManager;
 import com.android.settingslib.bluetooth.LocalBluetoothManager;
+import com.android.systemui.derp.DerpSettingsService;
 import com.android.systemui.appops.AppOpsController;
 import com.android.systemui.assist.AssistManager;
 import com.android.systemui.bubbles.BubbleController;
@@ -297,6 +298,7 @@ public class Dependency {
     @Inject Lazy<ChannelEditorDialogController> mChannelEditorDialogController;
     @Inject Lazy<INotificationManager> mINotificationManager;
     @Inject Lazy<FalsingManager> mFalsingManager;
+    @Inject Lazy<DerpSettingsService> mDerpSettingsService;
 
     @Inject
     public Dependency() {
@@ -492,6 +494,8 @@ public class Dependency {
         //                    a new class maybe named DisplayDependency to solve per-display
         //                    Dependency problem.
         mProviders.put(AutoHideController.class, mAutoHideController::get);
+
+        mProviders.put(DerpSettingsService.class, mDerpSettingsService::get);
 
         sDependency = this;
     }
