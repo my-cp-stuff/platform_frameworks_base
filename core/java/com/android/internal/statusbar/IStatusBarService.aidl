@@ -119,4 +119,5 @@ interface IStatusBarService
      * DerpFest
      */
     void toggleCameraFlash();
+    void setPartialScreenshot(boolean active);
 }

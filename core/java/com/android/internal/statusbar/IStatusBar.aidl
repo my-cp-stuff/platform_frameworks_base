@@ -180,4 +180,5 @@ oneway interface IStatusBar
      * DerpFest
      */
     void toggleCameraFlash();
+    void setPartialScreenshot(boolean active);
 }
