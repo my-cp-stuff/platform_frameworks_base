@@ -4836,6 +4836,15 @@ public final class Settings {
                 BOOLEAN_VALIDATOR;
 
         /**
+         * Whether to show arrow keys in navigation bar
+         * @hide
+         */
+        public static final String NAVIGATION_BAR_ARROW_KEYS = "navigation_bar_menu_arrow_keys";
+
+        private static final Validator NAVIGATION_BAR_ARROW_KEYS_VALIDATOR =
+                BOOLEAN_VALIDATOR;
+
+        /**
          * Wheter to play notification sound and vibration if screen is ON
          * 0 - never
          * 1 - always
@@ -5116,6 +5125,7 @@ public final class Settings {
             DOUBLE_TAP_SLEEP_GESTURE,
             BACK_GESTURE_HEIGHT,
             BACK_GESTURE_BLOCK_IME,
+            NAVIGATION_BAR_ARROW_KEYS,
         };
 
         /**
@@ -5261,6 +5271,7 @@ public final class Settings {
             PRIVATE_SETTINGS.add(BUTTON_BACKLIGHT_ENABLE);
             PRIVATE_SETTINGS.add(BUTTON_BACKLIGHT_TIMEOUT);
             PRIVATE_SETTINGS.add(BUTTON_BACKLIGHT_ON_TOUCH_ONLY);
+            PRIVATE_SETTINGS.add(NAVIGATION_BAR_ARROW_KEYS);
         }
 
         /**
@@ -5377,6 +5388,7 @@ public final class Settings {
             VALIDATORS.put(BACK_GESTURE_HEIGHT, BACK_GESTURE_HEIGHT_VALIDATOR);
             VALIDATORS.put(DOUBLE_TAP_SLEEP_GESTURE, DOUBLE_TAP_SLEEP_GESTURE_VALIDATOR);
             VALIDATORS.put(BACK_GESTURE_BLOCK_IME,BACK_GESTURE_BLOCK_IME_VALIDATOR);
+            VALIDATORS.put(NAVIGATION_BAR_ARROW_KEYS, NAVIGATION_BAR_ARROW_KEYS_VALIDATOR);
         }
 
         /**
