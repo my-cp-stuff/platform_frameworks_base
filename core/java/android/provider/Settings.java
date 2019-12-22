@@ -8953,6 +8953,12 @@ public final class Settings {
         public static final String SCREENSHOT_IN_POWER_MENU = "screenshot_in_power_menu";
 
         /**
+         * Whether the Screenrecord button should be shown in the power menu.
+         * @hide
+         */
+        public static final String SCREENRECORD_IN_POWER_MENU = "screenrecord_in_power_menu";
+
+        /**
          * Backup manager behavioral parameters.
          * This is encoded as a key=value list, separated by commas. Ex:
          *
