@@ -69,4 +69,6 @@
          true will use SystemClock.elapsedRealtimeNanos() to set timestamp. -->
     <bool name="config_useSystemClockforRotationSensor">false</bool>
 
+    <bool name="config_has_Soli">false</bool>
+
 </resources>
