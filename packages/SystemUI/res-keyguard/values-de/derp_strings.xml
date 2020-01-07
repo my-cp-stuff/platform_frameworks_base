@@ -144,5 +144,7 @@
     <string name="date_long_title_today">Heute ist %s</string>
     <string name="clock_title_type_alt">Typografisch (zentriert)</string>
     <string name="clock_title_spectrum">Spektrum</string>
+    <string name="clock_title_two_line_digital">Vertikal</string>
+    <string name="clock_title_one_line_digital">Digital</string>
 
 </resources>

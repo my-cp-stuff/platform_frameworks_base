@@ -56,11 +56,6 @@ public class BinaryClockController implements ClockPlugin {
     private final SysuiColorExtractor mColorExtractor;
 
     /**
-     * Computes preferred position of clock.
-     */
-    private final SmallClockPosition mClockPosition;
-
-    /**
      * Renders preview from clock view.
      */
     private final ViewPreviewer mRenderer = new ViewPreviewer();
@@ -72,12 +67,6 @@ public class BinaryClockController implements ClockPlugin {
     private ClockLayout mBigClockView;
 
     private final Context mContext;
-
-    /**
-     * Small clock shown on lock screen above stack scroller.
-     */
-    private View mView;
-    private TextClock mLockClock;
 
     /**
      * Helper to extract colors from wallpaper palette for clock face.
@@ -109,24 +98,18 @@ public class BinaryClockController implements ClockPlugin {
         mResources = res;
         mLayoutInflater = inflater;
         mColorExtractor = colorExtractor;
-        mClockPosition = new SmallClockPosition(res);
         mContext = context;
     }
 
     private void createViews() {
         mBigClockView = (ClockLayout) mLayoutInflater.inflate(R.layout.binary_clock, null);
-        mBinaryClock = mBigClockView.findViewById(R.id.analog_clock);
-
-        mView = mLayoutInflater.inflate(R.layout.digital_clock, null);
-        mLockClock = mView.findViewById(R.id.lock_screen_clock);
+        mBinaryClock = mBigClockView.findViewById(R.id.binary_clock);
     }
 
     @Override
     public void onDestroyView() {
         mBigClockView = null;
         mBinaryClock = null;
-        mView = null;
-        mLockClock = null;
     }
 
     @Override
@@ -162,10 +145,7 @@ public class BinaryClockController implements ClockPlugin {
 
     @Override
     public View getView() {
-        if (mView == null) {
-            createViews();
-        }
-        return mView;
+        return null;
     }
 
     @Override
@@ -178,11 +158,8 @@ public class BinaryClockController implements ClockPlugin {
 
     @Override
     public int getPreferredY(int totalHeight) {
-        return mClockPosition.getPreferredY();
+        return totalHeight / 2;
     }
-
-    @Override
-    public void setStyle(Style style) {}
 
     @Override
     public void setTextColor(int color) {
@@ -198,7 +175,6 @@ public class BinaryClockController implements ClockPlugin {
     private void updateColor() {
         final int primary = mPalette.getPrimaryColor();
         final int secondary = mPalette.getSecondaryColor();
-        mLockClock.setTextColor(secondary);
         mBinaryClock.setTintColor(primary);
     }
 
@@ -206,13 +182,11 @@ public class BinaryClockController implements ClockPlugin {
     public void onTimeTick() {
         mBinaryClock.onTimeChanged();
         mBigClockView.onTimeChanged();
-        mLockClock.refresh();
     }
 
     @Override
     public void setDarkAmount(float darkAmount) {
         mPalette.setDarkAmount(darkAmount);
-        mClockPosition.setDarkAmount(darkAmount);
         mBigClockView.setDarkAmount(darkAmount);
         boolean dark = darkAmount == 1;
         mBinaryClock.setDark(dark);

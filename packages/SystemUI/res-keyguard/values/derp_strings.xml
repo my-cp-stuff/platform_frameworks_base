@@ -26,5 +26,7 @@
     <string name="date_long_title_today">Today is %s</string>
     <string name="clock_title_type_alt">Type (center)</string>
     <string name="clock_title_spectrum">Spectrum</string>
+    <string name="clock_title_two_line_digital">Vertical</string>
+    <string name="clock_title_one_line_digital">Digital</string>
 
 </resources>

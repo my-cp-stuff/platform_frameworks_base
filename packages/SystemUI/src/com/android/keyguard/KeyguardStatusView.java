@@ -159,6 +159,10 @@ public class KeyguardStatusView extends GridLayout implements
                 Settings.System.LOCK_CLOCK_FONT_STYLE, 23);
     }
 
+    public boolean hasCustomClockInBigContainer() {
+        return mClockView.hasCustomClockInBigContainer();
+    }
+
     /**
      * Set whether or not the lock screen is showing notifications.
      */
