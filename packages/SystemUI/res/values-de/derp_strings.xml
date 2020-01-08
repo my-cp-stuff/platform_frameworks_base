@@ -194,5 +194,7 @@
     <string name="volte_switch_summary">VoLTE-Symbol anzeigen</string>
 
     <string name="tuner_status_bar_bg_transparency">Transparenter Hintergrund der Statusleiste</string>
+    <string name="tuner_keyguard_show_lock_icon_title">Sperrstatus anzeigen</string>
+    <string name="tuner_keyguard_show_lock_icon_summary">Zeige das aktuelle Sperrsymbol oben</string>
 
 </resources>
