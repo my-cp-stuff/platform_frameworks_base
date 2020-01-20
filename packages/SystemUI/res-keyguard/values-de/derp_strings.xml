@@ -143,5 +143,6 @@
     <string name="clock_title_mnml_minimal">MNML\'s Minimal</string>
     <string name="date_long_title_today">Heute ist %s</string>
     <string name="clock_title_type_alt">Typografisch (zentriert)</string>
+    <string name="clock_title_spectrum">Spektrum</string>
 
 </resources>

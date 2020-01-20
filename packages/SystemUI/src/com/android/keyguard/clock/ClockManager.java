@@ -154,6 +154,7 @@ public final class ClockManager {
         addBuiltinClock(() -> new SamsungHighlightClockController(res, layoutInflater, colorExtractor, context));
         addBuiltinClock(() -> new BubbleClockController(res, layoutInflater, colorExtractor, context));
         addBuiltinClock(() -> new AnalogClockController(res, layoutInflater, colorExtractor, context));
+        addBuiltinClock(() -> new SpectrumClockController(res, layoutInflater, colorExtractor, context));
         addBuiltinClock(() -> new TypeClockController(res, layoutInflater, colorExtractor, context));
         addBuiltinClock(() -> new TypeClockAltController(res, layoutInflater, colorExtractor, context));
         addBuiltinClock(() -> new BinaryClockController(res, layoutInflater, colorExtractor, context));
