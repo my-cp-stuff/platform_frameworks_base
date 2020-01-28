@@ -4792,6 +4792,16 @@ public final class Settings {
         private static final Validator AMBIENT_NOTIFICATION_LIGHT_HIDE_AOD_VALIDATOR =
                 BOOLEAN_VALIDATOR;
 
+         /**
+         * Whether to use accent color for pulse
+         * @hide
+         */
+
+        public static final String AMBIENT_NOTIFICATION_LIGHT_ACCENT = "ambient_notification_light_accent";
+
+        private static final Validator AMBIENT_NOTIFICATION_LIGHT_ACCENT_VALIDATOR =
+                BOOLEAN_VALIDATOR;
+
         /**
          * helper setting to contain the current pulse reason so we can check
          * if it has been triggered from a notification or a gesture
@@ -4927,6 +4937,7 @@ public final class Settings {
             AMBIENT_NOTIFICATION_LIGHT_ACTIVATED,
             AMBIENT_NOTIFICATION_LIGHT_ENABLED,
             AMBIENT_NOTIFICATION_LIGHT_HIDE_AOD,
+            AMBIENT_NOTIFICATION_LIGHT_ACCENT,
             USE_OLD_MOBILETYPE,
             LOCKSCREEN_MEDIA_METADATA,
             NOTIFICATION_LIGHT_PULSE,
@@ -5160,6 +5171,7 @@ public final class Settings {
             VALIDATORS.put(AMBIENT_NOTIFICATION_LIGHT_ACTIVATED, AMBIENT_NOTIFICATION_LIGHT_ACTIVATED_VALIDATOR);
             VALIDATORS.put(AMBIENT_NOTIFICATION_LIGHT_ENABLED, AMBIENT_NOTIFICATION_LIGHT_ENABLED_VALIDATOR);
             VALIDATORS.put(AMBIENT_NOTIFICATION_LIGHT_HIDE_AOD, AMBIENT_NOTIFICATION_LIGHT_HIDE_AOD_VALIDATOR);
+            VALIDATORS.put(AMBIENT_NOTIFICATION_LIGHT_ACCENT, AMBIENT_NOTIFICATION_LIGHT_ACCENT_VALIDATOR);
             VALIDATORS.put(SHOW_FOURG, SHOW_FOURG_VALIDATOR);
             VALIDATORS.put(SHOW_VOLTE_ICON, SHOW_VOLTE_ICON_VALIDATOR);
             VALIDATORS.put(VOLTE_ICON_STYLE, VOLTE_ICON_STYLE_VALIDATOR);
