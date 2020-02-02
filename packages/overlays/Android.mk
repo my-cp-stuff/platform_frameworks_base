@@ -27,25 +27,47 @@ LOCAL_REQUIRED_MODULES := \
 	DisplayCutoutEmulationCornerOverlay \
 	DisplayCutoutEmulationDoubleOverlay \
 	DisplayCutoutEmulationTallOverlay \
-	FontAclonicaSourceOverlay \
-	FontAmaranteSourceOverlay \
 	FontArbutusSourceOverlay \
 	FontArvoLatoOverlay \
+	FontGoogleSansOverlay \
+	FontNotoSerifSourceOverlay \
+	FontRubikRubikOverlay \
+	FontCircularStdOverlay \
+	FontSlateForOnePlusOverlay \
+	FontAclonicaSourceOverlay \
+	FontAmaranteSourceOverlay \
 	FontBariolSourceOverlay \
 	FontCagliostroSourceOverlay \
 	FontCoolstorySourceOverlay \
     FontFiraSansSourceOverlay \
 	FontLGSmartGothicSourceOverlay \
-	FontGoogleSansOverlay \
-	FontNotoSerifSourceOverlay \
 	FontRosemarySourceOverlay \
     FontSamsungOneSourceOverlay \
 	FontSFProOverlay \
 	FontSonySketchSourceOverlay \
 	FontSurferSourceOverlay \
-	FontRubikRubikOverlay \
-	FontCircularStdOverlay \
-	FontSlateForOnePlusOverlay \
+    FontBigNoodle \
+    FontBikoHanken \
+    FontComicNeue \
+    FontExo2 \
+    FontFinlandica \
+    FontGoodlight \
+    FontGravity \
+    FontInter \
+    FontLeagueMonoNarrow \
+    FontLeonSans \
+    FontMescla \
+    FontMittelschrift \
+    FontOdibee \
+    FontPanamericana \
+    FontPissel \
+    FontPTSansMono \
+    FontReemKufi \
+    FontRoboto \
+    FontRouterGothicNarrow \
+    FontRoutedGothicRobotoCondensed \
+    FontSofiaSans \
+    FontSofiaSansSemiCondensed \
 	IconPackCircularAndroidOverlay \
 	IconPackCircularLauncherOverlay \
 	IconPackCircularSettingsOverlay \
