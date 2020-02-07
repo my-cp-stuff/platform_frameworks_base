@@ -39,6 +39,12 @@ public class AODTile extends QSTileImpl<State> implements
     private final Icon mIcon = ResourceIcon.get(R.drawable.ic_qs_aod);
     private final BatteryController mBatteryController;
 
+    private static final ComponentName LS_DISPLAY_SETTINGS_COMPONENT = new ComponentName(
+            "com.android.settings", "com.android.settings.Settings$LockscreenDashboardActivity");
+
+    private static final Intent LS_DISPLAY_SETTINGS =
+            new Intent().setComponent(LS_DISPLAY_SETTINGS_COMPONENT);
+
     @Inject
     public AODTile(QSHost host, BatteryController batteryController) {
         super(host);
@@ -90,7 +96,7 @@ public class AODTile extends QSTileImpl<State> implements
 
     @Override
     public Intent getLongClickIntent() {
-        return null;
+        return LS_DISPLAY_SETTINGS;
     }
 
     @Override
