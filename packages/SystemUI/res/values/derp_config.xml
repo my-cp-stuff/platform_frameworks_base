@@ -28,4 +28,8 @@
     <!-- Allow devices override audio panel location to the left side -->
     <bool name="config_audioPanelOnLeftSide">false</bool>
 
+    <!-- Max visible notification icons -->
+    <integer name="config_maxVisibleNotificationIcons">@*android:integer/config_maxVisibleNotificationIcons</integer>
+    <integer name="config_maxVisibleNotificationIconsWhenDark">@*android:integer/config_maxVisibleNotificationIconsWhenDark</integer>
+
 </resources>
