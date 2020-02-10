@@ -36,4 +36,8 @@
     <!-- Description of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
     <string name="permdesc_fakePackageSignature">Erlaubt es einer App, eine andere App nachzuahmen. Böswillige Anwendungen erhalten hierdurch möglicherweise Zugriff auf ihre persönlichen Daten. Erteilen Sie diese Berechtigung mit extremer Vorsicht!</string>
 
+    <!-- Strings for Bluetooth service -->
+    <!-- toast message informing user that Bluetooth stays on after airplane mode is turned on. [CHAR LIMIT=NONE] -->
+    <string name="bluetooth_airplane_mode_toast">Bluetooth bleibt während des Flugzeugmodus eingeschaltet</string>
+
 </resources>
