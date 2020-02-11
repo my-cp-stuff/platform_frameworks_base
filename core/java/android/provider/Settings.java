@@ -4748,9 +4748,9 @@ public final class Settings {
          * Whether to enable PULSE Edge lights
          * @hide
          */
-        public static final String PULSE_AMBIENT_LIGHT = "pulse_ambient_light";
+        public static final String NOTIFICATION_PULSE = "pulse_ambient_light";
 
-        private static final Validator PULSE_AMBIENT_LIGHT_VALIDATOR =
+        private static final Validator NOTIFICATION_PULSE_VALIDATOR =
                 BOOLEAN_VALIDATOR;
 
          /**
@@ -4758,38 +4758,32 @@ public final class Settings {
          * @hide
          */
 
-        public static final String AMBIENT_NOTIFICATION_LIGHT_ENABLED = "ambient_notification_light_enabled";
+        public static final String AOD_NOTIFICATION_PULSE = "ambient_notification_light_enabled";
 
-        private static final Validator AMBIENT_NOTIFICATION_LIGHT_ENABLED_VALIDATOR = BOOLEAN_VALIDATOR;
+        private static final Validator AOD_NOTIFICATION_PULSE_VALIDATOR = BOOLEAN_VALIDATOR;
 
          /**
-         * Whether to enable Ambient Edge lights
+         * Whether to change aod pulse state
          * @hide
          */
 
-        public static final String AMBIENT_NOTIFICATION_LIGHT = "ambient_notification_light";
-
-        private static final Validator AMBIENT_NOTIFICATION_LIGHT_VALIDATOR =
-                BOOLEAN_VALIDATOR;
+        public static final String AOD_NOTIFICATION_PULSE_TRIGGER = "ambient_notification_light";
 
          /**
          * Whether Ambient Edge lights are activated
          * @hide
          */
 
-        public static final String AMBIENT_NOTIFICATION_LIGHT_ACTIVATED = "ambient_notification_light_activated";
-
-        private static final Validator AMBIENT_NOTIFICATION_LIGHT_ACTIVATED_VALIDATOR =
-                BOOLEAN_VALIDATOR;
+        public static final String AOD_NOTIFICATION_PULSE_ACTIVATED = "ambient_notification_light_activated";
 
          /**
          * Whether hide everything on aod when  ambient lights are enabled
          * @hide
          */
 
-        public static final String AMBIENT_NOTIFICATION_LIGHT_HIDE_AOD = "ambient_notification_light_hide_aod";
+        public static final String AOD_NOTIFICATION_PULSE_CLEAR = "ambient_notification_light_hide_aod";
 
-        private static final Validator AMBIENT_NOTIFICATION_LIGHT_HIDE_AOD_VALIDATOR =
+        private static final Validator AOD_NOTIFICATION_PULSE_CLEAR_VALIDATOR =
                 BOOLEAN_VALIDATOR;
 
          /**
@@ -4797,9 +4791,9 @@ public final class Settings {
          * @hide
          */
 
-        public static final String AMBIENT_NOTIFICATION_LIGHT_ACCENT = "ambient_notification_light_accent";
+        public static final String NOTIFICATION_PULSE_ACCENT = "ambient_notification_light_accent";
 
-        private static final Validator AMBIENT_NOTIFICATION_LIGHT_ACCENT_VALIDATOR =
+        private static final Validator NOTIFICATION_PULSE_ACCENT_VALIDATOR =
                 BOOLEAN_VALIDATOR;
 
         /**
@@ -4932,12 +4926,10 @@ public final class Settings {
             DISPLAY_COLOR_MODE,
             QS_PANEL_BG_ALPHA,
             ALARM_ALERT,
-            PULSE_AMBIENT_LIGHT,
-            AMBIENT_NOTIFICATION_LIGHT,
-            AMBIENT_NOTIFICATION_LIGHT_ACTIVATED,
-            AMBIENT_NOTIFICATION_LIGHT_ENABLED,
-            AMBIENT_NOTIFICATION_LIGHT_HIDE_AOD,
-            AMBIENT_NOTIFICATION_LIGHT_ACCENT,
+            NOTIFICATION_PULSE,
+            AOD_NOTIFICATION_PULSE,
+            AOD_NOTIFICATION_PULSE_CLEAR,
+            NOTIFICATION_PULSE_ACCENT,
             USE_OLD_MOBILETYPE,
             LOCKSCREEN_MEDIA_METADATA,
             NOTIFICATION_LIGHT_PULSE,
@@ -5064,6 +5056,10 @@ public final class Settings {
             PRIVATE_SETTINGS.add(QS_PANEL_BG_ALPHA);
             PRIVATE_SETTINGS.add(SCREENSHOT_SOUND);
             PRIVATE_SETTINGS.add(BACK_GESTURE_HEIGHT);
+            PRIVATE_SETTINGS.add(NOTIFICATION_PULSE);
+            PRIVATE_SETTINGS.add(AOD_NOTIFICATION_PULSE);
+            PRIVATE_SETTINGS.add(AOD_NOTIFICATION_PULSE_CLEAR);
+            PRIVATE_SETTINGS.add(NOTIFICATION_PULSE_ACCENT);
             PRIVATE_SETTINGS.add(SHOW_FOURG);
             PRIVATE_SETTINGS.add(SHOW_VOLTE_ICON);
             PRIVATE_SETTINGS.add(VOLTE_ICON_STYLE);
@@ -5166,12 +5162,10 @@ public final class Settings {
             VALIDATORS.put(STATUS_BAR_SHOW_BATTERY_PERCENT, STATUS_BAR_SHOW_BATTERY_PERCENT_VALIDATOR);
             VALIDATORS.put(STATUS_BAR_BATTERY_TEXT_CHARGING, STATUS_BAR_BATTERY_TEXT_CHARGING_VALIDATOR);
             VALIDATORS.put(NOTIFICATION_LIGHT_PULSE, BOOLEAN_VALIDATOR);
-            VALIDATORS.put(PULSE_AMBIENT_LIGHT, PULSE_AMBIENT_LIGHT_VALIDATOR);
-            VALIDATORS.put(AMBIENT_NOTIFICATION_LIGHT, AMBIENT_NOTIFICATION_LIGHT_VALIDATOR);
-            VALIDATORS.put(AMBIENT_NOTIFICATION_LIGHT_ACTIVATED, AMBIENT_NOTIFICATION_LIGHT_ACTIVATED_VALIDATOR);
-            VALIDATORS.put(AMBIENT_NOTIFICATION_LIGHT_ENABLED, AMBIENT_NOTIFICATION_LIGHT_ENABLED_VALIDATOR);
-            VALIDATORS.put(AMBIENT_NOTIFICATION_LIGHT_HIDE_AOD, AMBIENT_NOTIFICATION_LIGHT_HIDE_AOD_VALIDATOR);
-            VALIDATORS.put(AMBIENT_NOTIFICATION_LIGHT_ACCENT, AMBIENT_NOTIFICATION_LIGHT_ACCENT_VALIDATOR);
+            VALIDATORS.put(NOTIFICATION_PULSE, NOTIFICATION_PULSE_VALIDATOR);
+            VALIDATORS.put(AOD_NOTIFICATION_PULSE, AOD_NOTIFICATION_PULSE_VALIDATOR);
+            VALIDATORS.put(AOD_NOTIFICATION_PULSE_CLEAR, AOD_NOTIFICATION_PULSE_CLEAR_VALIDATOR);
+            VALIDATORS.put(NOTIFICATION_PULSE_ACCENT, NOTIFICATION_PULSE_ACCENT_VALIDATOR);
             VALIDATORS.put(SHOW_FOURG, SHOW_FOURG_VALIDATOR);
             VALIDATORS.put(SHOW_VOLTE_ICON, SHOW_VOLTE_ICON_VALIDATOR);
             VALIDATORS.put(VOLTE_ICON_STYLE, VOLTE_ICON_STYLE_VALIDATOR);
