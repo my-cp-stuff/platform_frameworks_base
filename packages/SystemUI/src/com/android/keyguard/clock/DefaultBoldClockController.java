@@ -192,6 +192,10 @@ public class DefaultBoldClockController implements ClockPlugin {
 
     @Override
     public void onTimeTick() {
+        if (mView != null && mClock != null) {
+            mView.onTimeChanged();
+            mClock.refresh();
+        }
     }
 
     @Override
