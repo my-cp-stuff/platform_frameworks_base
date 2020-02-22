@@ -6153,4 +6153,10 @@ public class PhoneWindowManager implements WindowManagerPolicy {
         performHapticFeedback(HapticFeedbackConstants.LONG_PRESS, true, "Screenshot");
         derpUtils.takeScreenshot(true);
     }
+
+    // Notifications
+    private void toggleNotifications() {
+        performHapticFeedback(HapticFeedbackConstants.LONG_PRESS, true, "Notifications");
+        derpUtils.toggleNotifications();
+    }
 }
