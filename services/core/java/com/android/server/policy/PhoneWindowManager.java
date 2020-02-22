@@ -6649,25 +6649,31 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                 NavbarUtilities.toggleSplitScreen();
                 break;
             case NavbarUtilities.KEY_ACTION_FLASHLIGHT:
-                toggleFlashLight();
+                derpUtils.toggleCameraFlash();
                 break;
             case NavbarUtilities.KEY_ACTION_CLEAR_NOTIFICATIONS:
-                toggleClearNotifications();
+                derpUtils.clearAllNotifications();
                 break;
             case NavbarUtilities.KEY_ACTION_VOLUME_PANEL:
-                toggleVolumePanel();
+                derpUtils.toggleVolumePanel(mContext);
                 break;
             case NavbarUtilities.KEY_ACTION_SCREEN_OFF:
-                toggleScreenOff();
-                break;
-            case NavbarUtilities.KEY_ACTION_SCREENSHOT:
-                toggleScreenshot();
+                derpUtils.switchScreenOff(mContext);
                 break;
             case NavbarUtilities.KEY_ACTION_NOTIFICATIONS:
-                toggleNotifications();
+                derpUtils.toggleNotifications();
                 break;
             case NavbarUtilities.KEY_ACTION_POWER_MENU:
                 triggerVirtualKeypress(KeyEvent.KEYCODE_POWER, false, true);
+                break;
+            case NavbarUtilities.KEY_ACTION_SCREENSHOT:
+                derpUtils.takeScreenshot(true);
+                break;
+            case NavbarUtilities.KEY_ACTION_QS_PANEL:
+                derpUtils.toggleQsPanel();
+                break;
+            case NavbarUtilities.KEY_ACTION_RINGER_MODES:
+                derpUtils.toggleRingerModes(mContext);
                 break;
         }
     }
@@ -6724,41 +6730,5 @@ public class PhoneWindowManager implements WindowManagerPolicy {
         } catch (RemoteException|NullPointerException e) {
             // no-op
         }
-    }
-
-    // Flashlight
-    private void toggleFlashLight() {
-        performHapticFeedback(HapticFeedbackConstants.LONG_PRESS, true, "Flashlight toggle");
-        derpUtils.toggleCameraFlash();
-    }
-
-    // Clear notifications
-    private void toggleClearNotifications() {
-        performHapticFeedback(HapticFeedbackConstants.LONG_PRESS, true, "Clear-all notifications");
-        derpUtils.clearAllNotifications();
-    }
-
-    // Volume panel
-    private void toggleVolumePanel() {
-        performHapticFeedback(HapticFeedbackConstants.LONG_PRESS, true, "Volume panel");
-        derpUtils.toggleVolumePanel(mContext);
-    }
-
-    // Screen off
-    private void toggleScreenOff() {
-        performHapticFeedback(HapticFeedbackConstants.LONG_PRESS, true, "Screen off");
-        derpUtils.switchScreenOff(mContext);
-    }
-
-    // Screenshot
-    private void toggleScreenshot() {
-        performHapticFeedback(HapticFeedbackConstants.LONG_PRESS, true, "Screenshot");
-        derpUtils.takeScreenshot(true);
-    }
-
-    // Notifications
-    private void toggleNotifications() {
-        performHapticFeedback(HapticFeedbackConstants.LONG_PRESS, true, "Notifications");
-        derpUtils.toggleNotifications();
     }
 }
