@@ -220,7 +220,6 @@ import com.android.internal.util.derp.derpUtils;
 import com.android.internal.util.ArrayUtils;
 import com.android.server.ExtconStateObserver;
 import com.android.server.ExtconUEventObserver;
-import com.android.internal.util.derp.derpUtils;
 import com.android.server.GestureLauncherService;
 import com.android.server.LocalServices;
 import com.android.server.SystemServiceManager;
@@ -6643,6 +6642,21 @@ public class PhoneWindowManager implements WindowManagerPolicy {
             case NavbarUtilities.KEY_ACTION_SPLIT_SCREEN:
                 NavbarUtilities.toggleSplitScreen();
                 break;
+            case NavbarUtilities.KEY_ACTION_FLASHLIGHT:
+                toggleFlashLight();
+                break;
+            case NavbarUtilities.KEY_ACTION_CLEAR_NOTIFICATIONS:
+                toggleClearNotifications();
+                break;
+            case NavbarUtilities.KEY_ACTION_VOLUME_PANEL:
+                toggleVolumePanel();
+                break;
+            case NavbarUtilities.KEY_ACTION_SCREEN_OFF:
+                toggleScreenOff();
+                break;
+            case NavbarUtilities.KEY_ACTION_SCREENSHOT:
+                toggleScreenshot();
+                break;
         }
     }
 
@@ -6698,5 +6712,35 @@ public class PhoneWindowManager implements WindowManagerPolicy {
         } catch (RemoteException|NullPointerException e) {
             // no-op
         }
+    }
+
+    // Flashlight
+    private void toggleFlashLight() {
+        performHapticFeedback(HapticFeedbackConstants.LONG_PRESS, true, "Flashlight toggle");
+        derpUtils.toggleCameraFlash();
+    }
+
+    // Clear notifications
+    private void toggleClearNotifications() {
+        performHapticFeedback(HapticFeedbackConstants.LONG_PRESS, true, "Clear-all notifications");
+        derpUtils.clearAllNotifications();
+    }
+
+    // Volume panel
+    private void toggleVolumePanel() {
+        performHapticFeedback(HapticFeedbackConstants.LONG_PRESS, true, "Volume panel");
+        derpUtils.toggleVolumePanel(mContext);
+    }
+
+    // Screen off
+    private void toggleScreenOff() {
+        performHapticFeedback(HapticFeedbackConstants.LONG_PRESS, true, "Screen off");
+        derpUtils.switchScreenOff(mContext);
+    }
+
+    // Screenshot
+    private void toggleScreenshot() {
+        performHapticFeedback(HapticFeedbackConstants.LONG_PRESS, true, "Screenshot");
+        derpUtils.takeScreenshot(true);
     }
 }
