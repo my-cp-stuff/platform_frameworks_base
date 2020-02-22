@@ -17,6 +17,7 @@
 package com.android.internal.util.derp;
 
 import android.Manifest;
+import android.app.ActivityManager;
 import android.app.ActivityManagerNative;
 import android.content.ComponentName;
 import android.content.Context;
@@ -252,5 +253,17 @@ public class derpUtils {
         int state = enabled ? PackageManager.COMPONENT_ENABLED_STATE_ENABLED :
                 PackageManager.COMPONENT_ENABLED_STATE_DISABLED;
         pm.setComponentEnabledSetting(componentName, state, PackageManager.DONT_KILL_APP);
+    }
+
+    // Clear notifications
+    public static void clearAllNotifications() {
+        IStatusBarService service = getStatusBarService();
+        if (service != null) {
+            try {
+                service.onClearAllNotifications(ActivityManager.getCurrentUser());
+            } catch (RemoteException e) {
+                // do nothing.
+            }
+        }
     }
 }
