@@ -5025,6 +5025,12 @@ public final class Settings {
         private static final Validator STATUS_BAR_BATTERY_TEXT_CHARGING_VALIDATOR = BOOLEAN_VALIDATOR;
 
         /**
+         * Gestures nav: whether to use extended swipe instead of timeout to trigger custom actions
+         * @hide
+         */
+        public static final String BACK_SWIPE_EXTENDED = "back_swipe_extended";
+
+        /**
          * Settings to backup. This is here so that it's in the same place as the settings
          * keys and easy to update.
          *
