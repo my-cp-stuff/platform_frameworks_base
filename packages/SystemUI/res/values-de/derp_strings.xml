@@ -76,6 +76,9 @@
     <string name="accessibility_quick_settings_sync_changed_off">Synchronisierung ist ausgeschaltet.</string>
     <string name="accessibility_quick_settings_sync_changed_on">Synchronisierung ist eingeschaltet.</string>
 
+    <!-- Long swipe gesture actions -->
+    <string name="app_picker_dialog_title">Wählen Sie eine Anwendung</string>
+
     <!-- Screen recorder -->
     <string name="screenrecord_stopdot_label">Stop dot anzeigen</string>
 
