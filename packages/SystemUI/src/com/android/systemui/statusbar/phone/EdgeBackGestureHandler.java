@@ -724,6 +724,9 @@ public class EdgeBackGestureHandler implements DisplayListener {
             case 12: // Ringer modes
                 derpUtils.toggleRingerModes(mContext);
                 break;
+            case 13: // Kill app
+                derpUtils.killForegroundApp();
+                break;
             case 14: // Skip song
                 derpUtils.sendSystemKeyToStatusBar(KeyEvent.KEYCODE_MEDIA_NEXT);
                 break;
