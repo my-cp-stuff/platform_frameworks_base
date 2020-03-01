@@ -79,6 +79,9 @@
     <!-- Long swipe gesture actions -->
     <string name="app_picker_dialog_title">Wählen Sie eine Anwendung</string>
 
+    <string name="recents_app_killed">Anwendung beendet</string>
+    <string name="nope_cant_kill">Launcher kann nicht beendet werden</string>
+
     <!-- Screen recorder -->
     <string name="screenrecord_stopdot_label">Stop dot anzeigen</string>
 
