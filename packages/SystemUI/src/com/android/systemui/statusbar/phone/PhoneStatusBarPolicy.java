@@ -41,6 +41,7 @@ import android.os.Handler;
 import android.os.RemoteException;
 import android.os.UserHandle;
 import android.os.UserManager;
+import android.provider.Settings;
 import android.provider.Settings.Global;
 import android.service.notification.ZenModeConfig;
 import android.telecom.TelecomManager;
@@ -205,6 +206,7 @@ public class PhoneStatusBarPolicy
         filter.addAction(Intent.ACTION_MANAGED_PROFILE_UNAVAILABLE);
         filter.addAction(Intent.ACTION_MANAGED_PROFILE_REMOVED);
         filter.addAction(NfcAdapter.ACTION_ADAPTER_STATE_CHANGED);
+        filter.addAction(Intent.ACTION_TIME_TICK);
         mContext.registerReceiver(mIntentReceiver, filter, null, mHandler);
 
         // listen for user / profile change.
@@ -303,12 +305,17 @@ public class PhoneStatusBarPolicy
 
     private void updateAlarm() {
         final AlarmClockInfo alarm = mAlarmManager.getNextAlarmClock(UserHandle.USER_CURRENT);
+        int msBeforeShowAlarm = mContext.getResources()
+                .getInteger(R.integer.statusbar_milliseconds_before_show_alarm);
+        final boolean nextAlarmWithin24hr = alarm != null
+                && alarm.getTriggerTime() - System.currentTimeMillis() < msBeforeShowAlarm;
         final boolean hasAlarm = alarm != null && alarm.getTriggerTime() > 0;
         int zen = mZenController.getZen();
         final boolean zenNone = zen == Global.ZEN_MODE_NO_INTERRUPTIONS;
         mIconController.setIcon(mSlotAlarmClock, zenNone ? R.drawable.stat_sys_alarm_dim
                 : R.drawable.stat_sys_alarm, buildAlarmContentDescription());
-        mIconController.setIconVisibility(mSlotAlarmClock, mCurrentUserSetup && hasAlarm);
+        mIconController.setIconVisibility(mSlotAlarmClock, mCurrentUserSetup && hasAlarm
+                && nextAlarmWithin24hr);
     }
 
     private String buildAlarmContentDescription() {
@@ -786,6 +793,9 @@ public class PhoneStatusBarPolicy
                     break;
                 case NfcAdapter.ACTION_ADAPTER_STATE_CHANGED:
                     updateNfc();
+                    break;
+                case Intent.ACTION_TIME_TICK:
+                    updateAlarm();
                     break;
             }
         }

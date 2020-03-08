@@ -179,11 +179,19 @@ public class QuickStatusBarHeader extends RelativeLayout implements
 
     private SettingsObserver mSettingsObserver = new SettingsObserver(mHandler);
 
-    private final BroadcastReceiver mRingerReceiver = new BroadcastReceiver() {
+    private final BroadcastReceiver mIntentReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            mRingerMode = intent.getIntExtra(AudioManager.EXTRA_RINGER_MODE, -1);
-            updateStatusText();
+            String action = intent.getAction();
+            switch(action) {
+                case AudioManager.INTERNAL_RINGER_MODE_CHANGED_ACTION:
+                    mRingerMode = intent.getIntExtra(AudioManager.EXTRA_RINGER_MODE, -1);
+                    updateStatusText();
+                    break;
+                case Intent.ACTION_TIME_TICK:
+                    updateStatusText();
+                    break;
+            }
         }
     };
     private boolean mHasTopCutout = false;
@@ -364,7 +372,10 @@ public class QuickStatusBarHeader extends RelativeLayout implements
         CharSequence originalAlarmText = mNextAlarmTextView.getText();
 
         boolean alarmVisible = false;
-        if (mNextAlarm != null) {
+        int timeBeforeShowAlarm = mContext.getResources()
+                .getInteger(R.integer.statusbar_milliseconds_before_show_alarm);
+        if (mNextAlarm != null
+                && mNextAlarm.getTriggerTime() - System.currentTimeMillis() < timeBeforeShowAlarm) {
             alarmVisible = true;
             mNextAlarmTextView.setText(formatNextAlarm(mNextAlarm));
         }
@@ -613,14 +624,16 @@ public class QuickStatusBarHeader extends RelativeLayout implements
         if (listening) {
             mZenController.addCallback(this);
             mAlarmController.addCallback(this);
-            mContext.registerReceiver(mRingerReceiver,
-                    new IntentFilter(AudioManager.INTERNAL_RINGER_MODE_CHANGED_ACTION));
+            IntentFilter filter = new IntentFilter();
+            filter.addAction(AudioManager.INTERNAL_RINGER_MODE_CHANGED_ACTION);
+            filter.addAction(Intent.ACTION_TIME_TICK);
+            mContext.registerReceiver(mIntentReceiver, filter);
             mPrivacyItemController.addCallback(mPICCallback);
         } else {
             mZenController.removeCallback(this);
             mAlarmController.removeCallback(this);
             mPrivacyItemController.removeCallback(mPICCallback);
-            mContext.unregisterReceiver(mRingerReceiver);
+            mContext.unregisterReceiver(mIntentReceiver);
             mPrivacyChipLogged = false;
         }
     }
