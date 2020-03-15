@@ -174,4 +174,8 @@
     <integer name="config_doubleTapOnAppSwitchKeyBehavior">7</integer>
     <integer name="config_longPressOnCameraKeyBehavior">0</integer>
     <integer name="config_doubleTapOnCameraKeyBehavior">0</integer>
+
+    <!-- Allow devices to hide black gradient behind QS Panel -->
+    <bool name="config_hideQSBlackGradient">false</bool>
+
 </resources>
