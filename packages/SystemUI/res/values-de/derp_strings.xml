@@ -97,6 +97,9 @@
     <string name="recents_app_killed">Anwendung beendet</string>
     <string name="nope_cant_kill">Launcher kann nicht beendet werden</string>
 
+    <!-- Screenshot toast -->
+    <string name="delete_screenshot_toast">Screenshot deleted</string>
+
     <!-- Screen recorder -->
     <string name="screenrecord_dialog_title">Start recording?</string>
     <string name="screenrecord_dialog_summary">While recording, Android system can capture any sensitive information that\'s visible on your screen or played on your device. This includes passwords, payment info, photos, messages, and audio.</string>
