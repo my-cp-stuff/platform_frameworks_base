@@ -874,6 +874,10 @@ public final class DefaultPermissionGrantPolicy {
         // Lawnchair
         grantSystemFixedPermissionsToSystemPackage("ch.deletescape.lawnchair.ci", userId, STORAGE_PERMISSIONS);
 
+        // Google Photos
+        grantSystemFixedPermissionsToSystemPackage("com.google.android.apps.photos", userId, CONTACTS_PERMISSIONS,
+                PHONE_PERMISSIONS, STORAGE_PERMISSIONS, ALWAYS_LOCATION_PERMISSIONS);
+
         // ThemePicker
         String themePickerPackage = "com.android.customization";
         PackageInfo pkg = getPackageInfo(themePickerPackage);
