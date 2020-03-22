@@ -17,6 +17,9 @@ import android.graphics.Color;
 import android.os.SystemProperties;
 import android.util.Log;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class AccentUtils {
     private static final String TAG = "AccentUtils";
 
@@ -32,6 +35,9 @@ public class AccentUtils {
                 || resName.contains("colorAccent");
                 || resName.contains("gradient_start");
     }
+
+    private static ArrayList<String> gradientResources = new ArrayList<>(
+            Arrays.asList("gradient_end"));
 
     static boolean isResourceGradient(String resName) {
         for (String gr : gradientResources)
