@@ -130,6 +130,11 @@
     <string name="qs_menu_item_reset">Zurücksetzen</string>
     <string name="qs_menu_item_titles">Beschriftungen anzeigen</string>
 
+    <!-- Label for area where tiles can be added to the qs panel -->
+    <string name="drag_or_tap_to_add_tiles">Halten &amp; tippen oder ziehen Sie, um Kacheln hinzuzufügen</string>
+    <!-- Label for header of customize QS -->
+    <string name="drag_or_tap_to_rearrange_tiles">Halten &amp; ziehen Sie zum neu Anordnen oder tippen, um Kacheln zu entfernen</string>
+
     <!-- Location Tile -->
     <string name="accessibility_quick_settings_location_battery_saving">Standortdienste: Energiesparmodus.</string>
     <string name="accessibility_quick_settings_location_gps_only">Standortdienste: Nur Gerät.</string>
