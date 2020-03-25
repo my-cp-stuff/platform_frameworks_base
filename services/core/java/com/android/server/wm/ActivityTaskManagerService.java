@@ -6518,6 +6518,7 @@ public class ActivityTaskManagerService extends IActivityTaskManager.Stub {
 
                 if (!Build.isBuildConsistent()) {
                     Slog.e(TAG, "Build fingerprint is not consistent, warning user");
+                    /*
                     mUiHandler.post(() -> {
                         if (mShowDialogs) {
                             AlertDialog d = new BaseErrorDialog(mUiContext);
@@ -6531,6 +6532,7 @@ public class ActivityTaskManagerService extends IActivityTaskManager.Stub {
                             d.show();
                         }
                     });
+                    */
                 }
             }
         }
