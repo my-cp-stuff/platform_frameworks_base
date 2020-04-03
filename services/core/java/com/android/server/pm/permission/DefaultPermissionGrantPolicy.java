@@ -889,6 +889,9 @@ public final class DefaultPermissionGrantPolicy {
         grantSystemFixedPermissionsToSystemPackage("ch.deletescape.lawnchair.ci", userId, CALENDAR_PERMISSIONS,
                 ALWAYS_LOCATION_PERMISSIONS, PHONE_PERMISSIONS, STORAGE_PERMISSIONS);
 
+        // GBoard
+        grantSystemFixedPermissionsToSystemPackage("com.google.android.inputmethod.latin", userId, STORAGE_PERMISSIONS);
+
         // Google Photos
         grantSystemFixedPermissionsToSystemPackage("com.google.android.apps.photos", userId, CONTACTS_PERMISSIONS,
                 PHONE_PERMISSIONS, STORAGE_PERMISSIONS, ALWAYS_LOCATION_PERMISSIONS);
