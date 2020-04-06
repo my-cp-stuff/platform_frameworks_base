@@ -5314,6 +5314,12 @@ public final class Settings {
         private static final Validator ACCENT_COLOR_VALIDATOR = ANY_INTEGER_VALIDATOR;
 
         /**
+         * Gradient Color
+         * @hide
+         */
+        public static final String GRADIENT_COLOR = "gradient_color";
+
+        /**
          * header image package to use for daylight header - package name - null if default
          * @hide
          */
