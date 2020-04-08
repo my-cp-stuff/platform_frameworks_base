@@ -230,4 +230,7 @@
     <string name="tuner_keyguard_show_lock_icon_title">Show lock status</string>
     <string name="tuner_keyguard_show_lock_icon_summary">Show current lock status icon on top</string>
 
+    <!-- Alerting notification header label -->
+    <string name="notification_section_header_alerting">Alerting notifications</string>
+
 </resources>

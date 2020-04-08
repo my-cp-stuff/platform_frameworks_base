@@ -225,4 +225,7 @@
     <string name="tuner_keyguard_show_lock_icon_title">Sperrstatus anzeigen</string>
     <string name="tuner_keyguard_show_lock_icon_summary">Zeige das aktuelle Sperrsymbol oben</string>
 
+    <!-- Alerting notification header label -->
+    <string name="notification_section_header_alerting">Alarmierende Benachrichtigungen</string>
+
 </resources>
