@@ -104,7 +104,7 @@ public class BubbleClockController implements ClockPlugin {
 
     private void createViews() {
         mView = (ClockLayout) mLayoutInflater.inflate(R.layout.bubble_clock, null);
-        mAnalogClock = (ImageClock) mView.findViewById(R.id.analog_clock);
+        mAnalogClock = (ImageClock) mView.findViewById(R.id.bubble_clock);
     }
 
     @Override
@@ -204,10 +204,5 @@ public class BubbleClockController implements ClockPlugin {
     public boolean shouldShowStatusArea() {
         if (mContext == null) return true;
         return Settings.System.getInt(mContext.getContentResolver(), Settings.System.CLOCK_SHOW_STATUS_AREA, 1) == 1;
-    }
-
-    @Override
-    public boolean shouldShowInBigContainer() {
-        return true;
     }
 }
