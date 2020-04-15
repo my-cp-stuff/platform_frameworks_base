@@ -96,9 +96,12 @@
   <java-symbol type="bool" name="config_button_brightness_support" />
   <java-symbol type="integer" name="config_button_brightness_default" />
 
-  <!-- Light / Regular style fonts -->
+  <!-- Fonts -->
   <java-symbol type="string" name="config_lightFontFamily" />
   <java-symbol type="string" name="config_regularFontFamily" />
+  <java-symbol type="string" name="config_headlineFontFamilyMedium" />
+  <java-symbol type="string" name="config_bodyFontFamily" />
+  <java-symbol type="string" name="config_bodyFontFamilyMedium" />
 
   <!-- Bootleg unneccesary gradient declaration | Just for our shishu bars -->
   <java-symbol type="color" name="bootleg_accent_gradient_end_color" />
