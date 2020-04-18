@@ -10720,6 +10720,17 @@ public final class Settings {
         public static final String FACE_UNLOCK_ALWAYS_REQUIRE_SWIPE = "face_unlock_always_require_swipe";
 
         /**
+         * Wheter to have transparent background on lockscreen notifications
+         *
+         * @hide
+         */
+        public static final String LOCK_SCREEN_TRANSPARENT_NOTIFICATIONS_ENABLED =
+                "lock_screen_transparent_notifications_enabled";
+
+        private static final Validator LOCK_SCREEN_TRANSPARENT_NOTIFICATIONS_ENABLED_VALIDATOR =
+                BOOLEAN_VALIDATOR;
+
+        /**
          * This are the settings to be backed up.
          *
          * NOTE: Settings are backed up and restored in the order they appear
@@ -10866,7 +10877,8 @@ public final class Settings {
             STATUSBAR_CLOCK_DATE_STYLE,
             STATUSBAR_CLOCK_DATE_FORMAT,
             STATUSBAR_CLOCK_DATE_POSITION,
-            VOLUME_LINK_NOTIFICATION
+            VOLUME_LINK_NOTIFICATION,
+            LOCK_SCREEN_TRANSPARENT_NOTIFICATIONS_ENABLED
         };
 
         /**
@@ -11078,6 +11090,8 @@ public final class Settings {
             VALIDATORS.put(STATUSBAR_CLOCK_DATE_FORMAT, STATUSBAR_CLOCK_DATE_FORMAT_VALIDATOR);
             VALIDATORS.put(STATUSBAR_CLOCK_DATE_POSITION, STATUSBAR_CLOCK_DATE_POSITION_VALIDATOR);
             VALIDATORS.put(VOLUME_LINK_NOTIFICATION, VOLUME_LINK_NOTIFICATION_VALIDATOR);
+            VALIDATORS.put(LOCK_SCREEN_TRANSPARENT_NOTIFICATIONS_ENABLED,
+                    LOCK_SCREEN_TRANSPARENT_NOTIFICATIONS_ENABLED_VALIDATOR);
         }
 
         /**
