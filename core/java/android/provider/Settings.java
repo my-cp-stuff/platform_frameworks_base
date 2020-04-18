@@ -5695,8 +5695,17 @@ public final class Settings {
          * @hide
          */
         public static final String QS_BLUR_ENABLED = "qs_blur_enabled";
+
         /** @hide */
         public static final Validator QS_BLUR_ENABLED_VALIDATOR = BOOLEAN_VALIDATOR;
+
+        /**
+         * Controls whether to show R style notification headers
+         * @hide
+         */
+        public static final String NOTIFICATION_HEADERS = "notification_headers";
+
+        private static final Validator NOTIFICATION_HEADERS_VALIDATOR = BOOLEAN_VALIDATOR;
 
         /**
          * Settings to backup. This is here so that it's in the same place as the settings
@@ -5780,6 +5789,7 @@ public final class Settings {
             DOUBLE_TAP_SLEEP_GESTURE,
             FORCE_SHOW_NAVBAR,
             NAVIGATION_HANDLE_WIDTH,
+	        NOTIFICATION_HEADERS,
             BACK_GESTURE_HEIGHT,
             BACK_GESTURE_BLOCK_IME,
             NAVIGATION_BAR_ARROW_KEYS,
@@ -6092,6 +6102,7 @@ public final class Settings {
             VALIDATORS.put(STATUS_BAR_LOGO, STATUS_BAR_LOGO_VALIDATOR);
             VALIDATORS.put(QS_PANEL_BG_ALPHA, QS_PANEL_BG_ALPHA_VALIDATOR);
             VALIDATORS.put(NAVIGATION_HANDLE_WIDTH, NAVIGATION_HANDLE_WIDTH_VALIDATOR);
+            VALIDATORS.put(NOTIFICATION_HEADERS, NOTIFICATION_HEADERS_VALIDATOR);
             VALIDATORS.put(BACK_GESTURE_HEIGHT, BACK_GESTURE_HEIGHT_VALIDATOR);
             VALIDATORS.put(DOUBLE_TAP_SLEEP_GESTURE, DOUBLE_TAP_SLEEP_GESTURE_VALIDATOR);
             VALIDATORS.put(FORCE_SHOW_NAVBAR, FORCE_SHOW_NAVBAR_VALIDATOR);
