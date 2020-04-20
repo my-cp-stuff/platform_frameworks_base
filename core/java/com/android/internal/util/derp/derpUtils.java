@@ -457,6 +457,14 @@ public class derpUtils {
         }
     }
 
+    // Check if gesture navbar is enabled
+    public static boolean isGestureNavbar() {
+        return derpUtils.isThemeEnabled("com.android.internal.systemui.navbar.gestural")
+                || derpUtils.isThemeEnabled("com.android.internal.systemui.navbar.gestural_extra_wide_back")
+                || derpUtils.isThemeEnabled("com.android.internal.systemui.navbar.gestural_narrow_back")
+                || derpUtils.isThemeEnabled("com.android.internal.systemui.navbar.gestural_wide_back");
+    }
+
     public static boolean isOlderPixelDevice() {
         String deviceName = android.os.Build.DEVICE;
             return ("crosshatch".equals(deviceName) || "blueline".equals(deviceName)
