@@ -4552,14 +4552,6 @@ public final class Settings {
        public static final String BATTERY_LIGHT_REALLYFULL_COLOR = "battery_light_reallyfull_color";
 
         /**
-         * Setting to determine whether or not to show the battery percentage in the status bar.
-         *    0 - Don't show percentage
-         *    1 - Show percentage
-         * @hide
-         */
-        public static final String SHOW_BATTERY_PERCENT = "dummy_show_battery_percent";
-
-        /**
          * Show 4G instead of LTE
          * @hide
          */
@@ -4987,34 +4979,6 @@ public final class Settings {
         public static final String QS_SHOW_BRIGHTNESS_ICON = "qs_show_brightness_icon";
 
         /**
-         * Display style of the status bar battery information
-         *    0: Display the battery as portrait icon (default)
-         *    1: Display the battery as dotted circle
-         *    2: Display the battery as circle
-         *    3: Display the battery as text
-         *    4: Do not display the battery
-         *    default: 0
-         * @hide
-         */
-        public static final String STATUS_BAR_BATTERY_STYLE = "status_bar_battery_style";
-
-        /** @hide */
-        private static final Validator STATUS_BAR_BATTERY_STYLE_VALIDATOR = BOOLEAN_VALIDATOR;
-
-        /**
-         * Display style of the battery information in the quick status bar header
-         *    0: Hide the battery percentage (default)
-         *    1: Display the battery percentage next to the icon
-         *    2: Display the battery percentage inside the icon
-         *    3: Display the battery estimates
-         * @hide
-         */
-        public static final String QS_BATTERY_MODE = "qs_battery_mode";
-
-        /** @hide */
-        private static final Validator QS_BATTERY_MODE_VALIDATOR = BOOLEAN_VALIDATOR;
-
-        /**
          *  Enable statusbar double tap gesture on to put device to sleep
          * @hide
          */
@@ -5023,27 +4987,6 @@ public final class Settings {
         /** @hide */
         private static final Validator DOUBLE_TAP_SLEEP_GESTURE_VALIDATOR =
                 BOOLEAN_VALIDATOR;
-
-        /**
-         * Whether or not to show the battery percentage in the status bar
-         *    0: Hide the battery percentage (default)
-         *    1: Display the battery percentage inside the icon
-         *    2: Display the battery percentage next to the icon
-         * @hide
-         */
-        public static final String STATUS_BAR_SHOW_BATTERY_PERCENT = "status_bar_show_battery_percent";
-
-        /** @hide */
-        private static final Validator STATUS_BAR_SHOW_BATTERY_PERCENT_VALIDATOR = BOOLEAN_VALIDATOR;
-
-        /**
-         * Whether or not to show battery percentage when charging
-         * @hide
-         */
-        public static final String STATUS_BAR_BATTERY_TEXT_CHARGING = "status_bar_battery_text_charging";
-
-        /** @hide */
-        private static final Validator STATUS_BAR_BATTERY_TEXT_CHARGING_VALIDATOR = BOOLEAN_VALIDATOR;
 
         /**
          * Gestures nav: whether to use extended swipe instead of timeout to trigger custom actions
@@ -5319,10 +5262,7 @@ public final class Settings {
             GESTURE_PILL_TOGGLE,
             NOTIFICATION_SOUND,
             ACCELEROMETER_ROTATION,
-            STATUS_BAR_BATTERY_STYLE,
-            QS_BATTERY_MODE,
-            STATUS_BAR_SHOW_BATTERY_PERCENT,
-            STATUS_BAR_BATTERY_TEXT_CHARGING,
+            SHOW_BATTERY_PERCENT,
             NOTIFICATION_VIBRATION_INTENSITY,
             RING_VIBRATION_INTENSITY,
             HAPTIC_FEEDBACK_INTENSITY,
@@ -5477,6 +5417,7 @@ public final class Settings {
             PRIVATE_SETTINGS.add(LOCK_TO_APP_ENABLED);
             PRIVATE_SETTINGS.add(GESTURE_PILL_TOGGLE);
             PRIVATE_SETTINGS.add(EGG_MODE);
+            PRIVATE_SETTINGS.add(SHOW_BATTERY_PERCENT);
             PRIVATE_SETTINGS.add(DISPLAY_COLOR_MODE);
             PRIVATE_SETTINGS.add(QS_PANEL_BG_ALPHA);
             PRIVATE_SETTINGS.add(BACK_GESTURE_HEIGHT);
@@ -5610,10 +5551,7 @@ public final class Settings {
             VALIDATORS.put(WIFI_STATIC_NETMASK, WIFI_STATIC_NETMASK_VALIDATOR);
             VALIDATORS.put(WIFI_STATIC_DNS1, WIFI_STATIC_DNS1_VALIDATOR);
             VALIDATORS.put(WIFI_STATIC_DNS2, WIFI_STATIC_DNS2_VALIDATOR);
-            VALIDATORS.put(STATUS_BAR_BATTERY_STYLE, STATUS_BAR_BATTERY_STYLE_VALIDATOR);
-            VALIDATORS.put(QS_BATTERY_MODE, QS_BATTERY_MODE_VALIDATOR);
-            VALIDATORS.put(STATUS_BAR_SHOW_BATTERY_PERCENT, STATUS_BAR_SHOW_BATTERY_PERCENT_VALIDATOR);
-            VALIDATORS.put(STATUS_BAR_BATTERY_TEXT_CHARGING, STATUS_BAR_BATTERY_TEXT_CHARGING_VALIDATOR);
+            VALIDATORS.put(SHOW_BATTERY_PERCENT, SHOW_BATTERY_PERCENT_VALIDATOR);
             VALIDATORS.put(NOTIFICATION_LIGHT_PULSE, BOOLEAN_VALIDATOR);
             VALIDATORS.put(NOTIFICATION_PULSE, NOTIFICATION_PULSE_VALIDATOR);
             VALIDATORS.put(AOD_NOTIFICATION_PULSE, AOD_NOTIFICATION_PULSE_VALIDATOR);
