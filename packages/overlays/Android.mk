@@ -70,6 +70,17 @@ LOCAL_REQUIRED_MODULES := \
     FontSofiaSans \
     FontSofiaSansSemiCondensed \
     FontTinkerbell \
+    CoconFont \
+    ComfortaaFont \
+    ComicSansFont \
+    Fifa2018Font \
+    GrandHotelFont \
+    NokiaPureFont \
+    NunitoFont \
+    QuandoFont \
+    RedressedFont \
+    StoropiaFont \
+    UbuntuFont \
 	IconPackCircularAndroidOverlay \
 	IconPackCircularLauncherOverlay \
 	IconPackCircularSettingsOverlay \
