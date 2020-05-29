@@ -24,5 +24,6 @@
     <string name="clock_title_mnml_box">MNML\'s Box</string>
     <string name="clock_title_mnml_minimal">MNML\'s Minimal</string>
     <string name="date_long_title_today">Today is %s</string>
+    <string name="clock_title_type_alt">Type (center)</string>
 
 </resources>
