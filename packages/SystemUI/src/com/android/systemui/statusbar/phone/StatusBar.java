@@ -506,6 +506,7 @@ public class StatusBar extends SystemUI implements DemoMode, TunerService.Tunabl
 
     public ImageView mQSBlurView;
     private boolean blurperformed = false;
+    private boolean mBlurEnabled;
 
     private final Runnable mLongPressBrightnessChange = new Runnable() {
         @Override
@@ -1167,7 +1168,7 @@ public class StatusBar extends SystemUI implements DemoMode, TunerService.Tunabl
         float QSBlurAlpha = mNotificationPanel.getExpandedFraction();
         boolean enoughBlurData = QSBlurAlpha > 0;
 
-        if (enoughBlurData && !blurperformed && !mIsKeyguard) {
+        if (enoughBlurData && !blurperformed && !mIsKeyguard && mBlurEnabled) {
             drawBlurView();
             blurperformed = true;
             mQSBlurView.setVisibility(View.VISIBLE);
@@ -2077,6 +2078,9 @@ public class StatusBar extends SystemUI implements DemoMode, TunerService.Tunabl
             resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.FORCE_SHOW_NAVBAR),
                     false, this, UserHandle.USER_ALL);
+            resolver.registerContentObserver(Settings.System.getUriFor(
+                    Settings.System.QS_BLUR_ENABLED),
+                    false, this, UserHandle.USER_ALL);
         }
 
         @Override
@@ -2116,6 +2120,9 @@ public class StatusBar extends SystemUI implements DemoMode, TunerService.Tunabl
                 updateQsPanelResources();
             } else if (uri.equals(Settings.System.getUriFor(Settings.System.FORCE_SHOW_NAVBAR))) {
                 updateNavigationBar(getRegisterStatusBarResult(), false);
+            } else if (uri.equals(Settings.System.getUriFor(
+                    Settings.System.QS_BLUR_ENABLED))) {
+                setQsBlur();
             }
         }
 
@@ -2129,6 +2136,7 @@ public class StatusBar extends SystemUI implements DemoMode, TunerService.Tunabl
             setMediaHeadsup();
             setQsBatteryPercentMode();
             setQsRowsColumns();
+            setQsBlur();
         }
     }
 
@@ -2195,6 +2203,12 @@ public class StatusBar extends SystemUI implements DemoMode, TunerService.Tunabl
         if (mQSPanel != null) {
             mQSPanel.updateResources();
         }
+    }
+
+    private void setQsBlur() {
+        mBlurEnabled = Settings.System.getIntForUser(
+                mContext.getContentResolver(), Settings.System.QS_BLUR_ENABLED, 1,
+                UserHandle.USER_CURRENT) == 1;
     }
 
     /**
