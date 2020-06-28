@@ -4906,13 +4906,6 @@ public final class Settings {
          */
         public static final String LOCKSCREEN_MEDIA_BLUR = "lockscreen_media_blur";
 
-        /** @hide */
-        public static final String BACK_GESTURE_BLOCK_IME = "back_gesture_block_ime";
-
-        /** @hide */
-        private static final Validator BACK_GESTURE_BLOCK_IME_VALIDATOR =
-                BOOLEAN_VALIDATOR;
-
         /**
          * Whether to show arrow keys in navigation bar
          * @hide
@@ -5831,7 +5824,6 @@ public final class Settings {
             NAVIGATION_HANDLE_WIDTH,
 	        NOTIFICATION_HEADERS,
             BACK_GESTURE_HEIGHT,
-            BACK_GESTURE_BLOCK_IME,
             NAVIGATION_BAR_ARROW_KEYS,
             ASPECT_RATIO_APPS_ENABLED,
             ASPECT_RATIO_APPS_LIST,
@@ -5989,7 +5981,6 @@ public final class Settings {
             PRIVATE_SETTINGS.add(QS_PANEL_BG_ALPHA);
             PRIVATE_SETTINGS.add(NAVIGATION_HANDLE_WIDTH);
             PRIVATE_SETTINGS.add(BACK_GESTURE_HEIGHT);
-            PRIVATE_SETTINGS.add(BACK_GESTURE_BLOCK_IME);
             PRIVATE_SETTINGS.add(FINGERPRINT_ERROR_VIB);
             PRIVATE_SETTINGS.add(FINGERPRINT_SUCCESS_VIB);
             PRIVATE_SETTINGS.add(FORCE_SHOW_NAVBAR);
@@ -6152,7 +6143,6 @@ public final class Settings {
             VALIDATORS.put(BACK_GESTURE_HEIGHT, BACK_GESTURE_HEIGHT_VALIDATOR);
             VALIDATORS.put(DOUBLE_TAP_SLEEP_GESTURE, DOUBLE_TAP_SLEEP_GESTURE_VALIDATOR);
             VALIDATORS.put(FORCE_SHOW_NAVBAR, FORCE_SHOW_NAVBAR_VALIDATOR);
-            VALIDATORS.put(BACK_GESTURE_BLOCK_IME,BACK_GESTURE_BLOCK_IME_VALIDATOR);
             VALIDATORS.put(NAVIGATION_BAR_ARROW_KEYS, NAVIGATION_BAR_ARROW_KEYS_VALIDATOR);
             VALIDATORS.put(ASPECT_RATIO_APPS_ENABLED, ASPECT_RATIO_APPS_ENABLED_VALIDATOR);
             VALIDATORS.put(ASPECT_RATIO_APPS_LIST, ASPECT_RATIO_APPS_LIST_VALIDATOR);
