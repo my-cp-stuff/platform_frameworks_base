@@ -231,9 +231,6 @@
     <string name="show_fourg_summary">LTE-Symbol in der Statusleiste durch 4G ersetzen</string>
 
     <string name="tuner_status_bar_bg_transparency">Transparenter Hintergrund der Statusleiste</string>
-    <string name="tuner_keyguard_show_lock_icon_title">Sperrstatus anzeigen</string>
-    <string name="tuner_keyguard_show_lock_icon_summary">Zeige das aktuelle Sperrsymbol oben</string>
-    <string name="tuner_qs_long_press_action">Keine Panels zeigen bei langem Drücken</string>
 
     <!-- Alerting notification header label -->
     <string name="notification_section_header_alerting">Alarmierende Benachrichtigungen</string>
