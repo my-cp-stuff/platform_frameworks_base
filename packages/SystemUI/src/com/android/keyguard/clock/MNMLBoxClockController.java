@@ -213,4 +213,9 @@ public class MNMLBoxClockController implements ClockPlugin {
     public boolean shouldShowStatusArea() {
         return false;
     }
+
+    @Override
+    public boolean shouldShowInBigContainer() {
+        return true;
+    }
 }
