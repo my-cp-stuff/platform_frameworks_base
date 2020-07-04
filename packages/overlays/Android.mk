@@ -81,6 +81,7 @@ LOCAL_REQUIRED_MODULES := \
     RedressedFont \
     StoropiaFont \
     UbuntuFont \
+	FontLinotte \
 	IconPackCircularAndroidOverlay \
 	IconPackCircularLauncherOverlay \
 	IconPackCircularSettingsOverlay \
