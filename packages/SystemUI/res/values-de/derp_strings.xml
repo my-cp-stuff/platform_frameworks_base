@@ -30,6 +30,11 @@
     <string name="quick_settings_aod_off_label">AOD deaktiviert</string>
     <string name="quick_settings_aod_off_powersave_label">AOD deaktiviert\nEnergie sparen</string>
 
+    <!-- HW Keys Tile -->
+    <string name="accessibility_quick_settings_hwkeys_on">Hardwaretasten aktiv</string>
+    <string name="accessibility_quick_settings_hwkeys_off">Hardwaretasten deaktiv</string>
+    <string name="quick_settings_hwkeys_label">Hardwaretasten</string>
+
     <!-- Caffeine QS Tile -->
     <string name="quick_settings_caffeine_label">Koffein</string>
     <string name="quick_settings_caffeine_label_off">Aus</string>
@@ -96,6 +101,13 @@
     <string name="accessibility_quick_settings_sync_changed_off">Synchronisierung ist ausgeschaltet.</string>
     <string name="accessibility_quick_settings_sync_changed_on">Synchronisierung ist eingeschaltet.</string>
 
+    <string name="screen_pinning_description_custom">Der Bildschirm wird solange angezeigt, bis die Fixierung aufgehoben wird. \"Zurück\" gedrückt halten, um die Fixierung aufzuheben.</string>
+    <string name="screen_pinning_description_recents_invisible_custom">Der Bildschirm wird solange angezeigt, bis die Fixierung aufgehoben wird. \"Zurück\" gedrückt halten, um die Fixierung aufzuheben.</string>
+    <string name="screen_pinning_description_accessible_custom">Der Bildschirm wird solange angezeigt, bis die Fixierung aufgehoben wird. \"Zurück\" gedrückt halten, um die Fixierung aufzuheben.</string>
+    <string name="screen_pinning_description_recents_invisible_accessible_custom">Der Bildschirm wird solange angezeigt, bis die Fixierung aufgehoben wird. \"Zurück\" gedrückt halten, um die Fixierung aufzuheben.</string>
+    <string name="screen_pinning_toast_custom">Um die Bildschirm-Fixierung aufzuheben, \"Zurück\" gedrückt halten</string>
+    <string name="screen_pinning_toast_recents_invisible_custom">Um die Bildschirm-Fixierung aufzuheben, \"Zurück\" gedrückt halten</string>
+
     <!-- Long swipe gesture actions -->
     <string name="app_picker_dialog_title">Wählen Sie eine Anwendung</string>
 
@@ -106,33 +118,20 @@
     <string name="delete_screenshot_toast">Screenshot deleted</string>
 
     <!-- Screen recorder -->
-    <string name="screenrecord_dialog_title">Start recording?</string>
-    <string name="screenrecord_dialog_summary">While recording, Android system can capture any sensitive information that\'s visible on your screen or played on your device. This includes passwords, payment info, photos, messages, and audio.</string>
-    <string name="screenrecord_dialog_start">Start</string>
-    <string name="screenrecord_dialog_cancel">Cancel</string>
-    <string name="screenrecord_audio_title">Audio source</string>
-    <string name="screenrecord_audio_recording_internal">Internal</string>
-    <string name="screenrecord_audio_recording_microphone">Microphone</string>
-    <string name="screenrecord_audio_recording_off">Disabled</string>
-    <string name="screenrecord_taps_title">Show touches on screen</string>
-    <string name="screenrecord_stopdot_title">Show stop dot</string>
-    <string name="screenrecord_video_bitrate_title">Video Bitrate</string>
+    <string name="screenrecord_dialog_title">Die Aufnahme starten?</string>
+    <string name="screenrecord_dialog_summary">Während der Aufnahme kann das Android-System alle vertraulichen Informationen erfassen, die auf Ihrem Bildschirm sichtbar sind oder auf Ihrem Gerät abgespielt werden. Dies umfasst Passwörter, Zahlungsinformationen, Fotos, Nachrichten und Audio.</string>
+    <string name="screenrecord_dialog_start">Starten</string>
+    <string name="screenrecord_dialog_cancel">Abbrechen</string>
+    <string name="screenrecord_audio_title">Audio-Quelle</string>
+    <string name="screenrecord_audio_recording_internal">Intern</string>
+    <string name="screenrecord_audio_recording_microphone">Mikrofon</string>
+    <string name="screenrecord_audio_recording_off">Deaktiviert</string>
+    <string name="screenrecord_taps_title">Berührungen auf dem Bildschirm anzeigen</string>
+    <string name="screenrecord_stopdot_title">Stopppunkt anzeigen</string>
+    <string name="screenrecord_video_bitrate_title">Video-Bitrate</string>
     <!-- Power menu item for taking a screenshot [CHAR LIMIT=20]-->
     <string name="global_action_screenshot_cust">Screenshot</string>
     <string name="global_action_screenrecord">Bildschirmaufnahme</string>
-
-    <!-- QS Config -->
-    <string name="qs_menu_item_columns">Spalten</string>
-    <string name="qs_menu_item_columns_landscape">Spalten (Landscape)</string>
-    <string name="qs_menu_item_columns_three">3</string>
-    <string name="qs_menu_item_columns_four">4</string>
-    <string name="qs_menu_item_columns_five">5</string>
-    <string name="qs_menu_item_columns_six">6</string>
-    <string name="qs_menu_item_columns_seven">7</string>
-    <string name="qs_menu_item_columns_eight">8</string>
-    <string name="qs_menu_item_columns_nine">9</string>
-    <string name="qs_menu_item_reset">Zurücksetzen</string>
-    <string name="qs_menu_item_titles">Beschriftungen anzeigen</string>
 
     <!-- Label for area where tiles can be added to the qs panel -->
     <string name="drag_or_tap_to_add_tiles">Halte und ziehe oder tippe, um Kacheln hinzuzufügen</string>
@@ -239,7 +238,35 @@
     <string name="screenrecorder_title_tile">Bildschirmaufnahme</string>
 
     <!-- Heads up snooze toast -->
-    <string name="heads_up_snooze_message_one_minute"><xliff:g id="string">%s</xliff:g> - Peeking notification are snoozing for 1 minute.</string>
-    <string name="heads_up_snooze_message"><xliff:g id="string">%s</xliff:g> - Peeking notifications are snoozing for <xliff:g id="number">%d</xliff:g> minutes.</string>
+    <string name="heads_up_snooze_message_one_minute"><xliff:g id="string">%s </xliff:g> - Heads-Up Benachrichtigungen sind für 1 Minute deaktiviert.</string>
+    <string name="heads_up_snooze_message"><xliff:g id="string">%s </xliff:g> - Heads-Up Benachrichtigungen sind für <xliff:g id="number">%d </xliff:g> Minuten deaktiviert.</string>
+
+    <!-- VPN QS tile -->
+    <string name="quick_settings_vpn_label">VPN</string>
+    <string name="quick_settings_vpn_connect_dialog_title">Verbinden mit\u2026</string>
+    <string name="vpn_credentials_hint">Bitte geben Sie Ihre Anmeldeinformationen ein, um eine Verbindung herzustellen zu <xliff:g id="name">%s</xliff:g></string>
+    <string name="vpn_credentials_username">Benutzername</string>
+    <string name="vpn_credentials_password">Passwort</string>
+    <string name="vpn_credentials_dialog_connect">Verbinden</string>
+
+    <!-- Indication on the keyguard that is shown when the device is charging with a warp charger. Should match keyguard_plugged_in_warp_charging [CHAR LIMIT=40]-->
+    <string name="keyguard_indication_warp_charging_time"><xliff:g id="percentage">%2$s</xliff:g>  Warp-Ladevorgang (<xliff:g id="charging_time_left" example="4 hours and 2 minutes">%1$s</xliff:g> bis zur vollständigen Aufladung)</string>
+    <string name="keyguard_plugged_in_warp_charging"><xliff:g id="percentage">%s</xliff:g>  Schnellladen (Warp)</string>
+    <!-- Indication on the keyguard that is shown when the device is charging with a dash charger. Should match keyguard_plugged_in_dash_charging [CHAR LIMIT=40]-->
+    <string name="keyguard_indication_dash_charging_time">Dash-Ladevorgang (<xliff:g id="charging_time_left" example="4 hours and 2 minutes">%s</xliff:g> bis zur vollständigen Aufladung)</string>
+    <string name="keyguard_plugged_in_dash_charging">Schnellladen (Dash)</string>
+
+     <!-- Screen Stabilization -->
+    <string name="quick_settings_stabilization_label">Bildschirmstabilisierung</string>
+    <string name="quick_settings_stabilization_off">Stabilisierung ist deaktiv</string>
+    <string name="quick_settings_stabilization_on">Stabilisierung ist aktiv</string>
+    <string name="low_label">Niedrig</string>
+    <string name="high_label">Hoch</string>
+    <string name="stabilization_velocity_friction">Velocity Friction</string>
+    <string name="stabilization_velocity_amplitude">Velocity Amplitude</string>
+    <string name="stabilization_position_friction">Position Friction</string>
+
+    <!-- Running service button -->
+    <string name="accessibility_quick_settings_running_services">Öffnen Sie die Übersicht der laufenden Prozesse.</string>
 
 </resources>
