@@ -27,23 +27,24 @@ public class AccentUtils {
     private static final String GRADIENT_COLOR_PROP = "persist.sys.theme.gradientcolor";
 
     static boolean isResourceAccent(String resName) {
-        return resName.contains("accent_device_default_light");
-                || resName.contains("accent_device_default_dark");
-                || resName.contains("accent_device_default");
-                || resName.contains("material_pixel_blue_dark");
-                || resName.contains("material_pixel_blue_bright");
-                || resName.contains("colorAccent");
-                || resName.contains("gradient_start");
+        return resName.contains("accent_device_default_light")
+                || resName.contains("accent_device_default_dark")
+                || resName.contains("accent_device_default")
+                || resName.contains("material_pixel_blue_dark")
+                || resName.contains("material_pixel_blue_bright")
+                || resName.contains("gradient_start")
+                || resName.contains("colorAccent")
+                || resName.contains("holo_blue_light")
+                || resName.contains("holo_blue_dark")
+                || resName.contains("omni_color5")
+                || resName.contains("omni_color4")
+                || resName.contains("dialer_theme_color")
+                || resName.contains("dialer_theme_color_dark")
+                || resName.contains("dialer_theme_color_20pct");
     }
 
-    private static ArrayList<String> gradientResources = new ArrayList<>(
-            Arrays.asList("gradient_end"));
-
     static boolean isResourceGradient(String resName) {
-        for (String gr : gradientResources)
-            if (resName.contains(gr))
-                return true;
-        return false;
+        return resName.contains("gradient_end");
     }
 
     public static int getNewAccentColor(int defaultColor) {
